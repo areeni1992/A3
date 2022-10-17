@@ -75,5 +75,8 @@ Route::group(
     Route::get('pages', [PageController::class, 'index'])->name('pages');
     Route::get('pages/create', [PageController::class, 'create'])->name('createPage');
     Route::post('pages/store', [PageController::class, 'store'])->name('storePage');
+    Route::get('pages/edit/{id}', [PageController::class, 'edit'])->name('editPage');
+    Route::put('pages/update/{id}', [PageController::class, 'update'])->name('updatePage');
+    Route::get('pages/delete/{id}', [PageController::class, 'destroy'])->name('deletePage');
 
 });

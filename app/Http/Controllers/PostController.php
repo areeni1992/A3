@@ -87,7 +87,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request,Post $post)
+    public function update(UpdatePostRequest $request)
     {
         $exactPost = Post::find($request->id);
         if ($request->hasFile('image'))

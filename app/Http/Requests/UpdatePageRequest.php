@@ -13,7 +13,7 @@ class UpdatePageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class UpdatePageRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $data = [
+            'status'=> 'required',
+            'image' => ($this->method() == "POST" ? 'required|' : '') . 'mimes:jpeg,png,jpg,gif',
         ];
+        foreach (config('translatable.locales') as $lang )
+        {
+            $data[$lang.'*.title'] = 'required|string';
+            $data[$lang.'*.content'] = 'string';
+            $data[$lang.'*.slug'] = 'string';
+            $data[$lang.'*.shortdesc'] = 'string';
+        }
+        return $data;
     }
 }

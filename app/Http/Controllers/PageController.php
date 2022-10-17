@@ -76,9 +76,11 @@ class PageController extends Controller
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit($id)
     {
+        $exactPage = Page::find($id);
 
+        return view('backend.page.edit', compact('exactPage'));
     }
 
     /**
@@ -88,9 +90,27 @@ class PageController extends Controller
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePageRequest $request, Page $page)
+    public function update(UpdatePageRequest $request)
     {
-        //
+        $exactPage = Page::find($request->id);
+//        dd($exactPage);
+
+        if ($request->hasFile('image'))
+        {
+            Storage::disk('public')->delete($exactPage->image);
+            $image  = Request::file('image');
+            $fileName = 'page'.'-'.time().'.'.$image->getClientOriginalExtension();
+
+            $exactPage->update(collect($request->validated())->except(['image'])->toArray());
+            $exactPage->image = $image->storeAs('images', $fileName, 'public');
+            $exactPage->save();
+
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+        } else {
+            Page::update($request->input());
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+
+        }
     }
 
     /**
@@ -99,8 +119,10 @@ class PageController extends Controller
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy($id)
     {
-        //
+        $exactPage = Page::find($id);
+        $exactPage->delete();
+        return redirect()->back()->with('success', 'Post has been Deleted successfully.');
     }
 }

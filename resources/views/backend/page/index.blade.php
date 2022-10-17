@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Fixed Header Table</h3>
+                    <h3 class="card-title">Pages</h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm w-35 ms-auto">
@@ -34,7 +34,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{ app()->getLocale() }}
+
                         <?php $i = 1; ?>
                         @foreach($pages as $page)
 {{--                            @if($page->title !== null)--}}
@@ -46,8 +46,8 @@
                                 </td>
                                 <td><span class="tag tag-success">{{ $page->status }}</span></td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-behance">{{ __('words.edit') }}</a>
-                                    <a href="" class="btn btn-sm btn-dribbble">{{ __('words.delete') }}</a>
+                                    <a href="{{ route('editPage',$page->id) }}" class="btn btn-sm btn-behance">{{ __('words.edit') }}</a>
+                                    <a href="{{ route('deletePage', $page->id) }}" class="btn btn-sm btn-dribbble">{{ __('words.delete') }}</a>
                                 </td>
                             </tr>
 {{--                            @endif--}}
