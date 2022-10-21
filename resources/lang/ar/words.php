@@ -27,4 +27,11 @@ return [
     'name' => 'الاسم',
     'select parent category' => 'إختر التصنيف الرئيسي',
     'create page' => 'انشيء صفحة',
+
+    'products' => 'المنتجات',
+    'price' => 'السعر',
+    'desc' => 'الوصف',
+
+    'homePage' => 'الواجهة الرئيسية'
+
 ];

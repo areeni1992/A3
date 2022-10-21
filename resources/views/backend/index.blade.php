@@ -28,6 +28,18 @@
             toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
         });
     </script>
+
+    <style>
+        .o-accordion .card-header a::after {
+            position: absolute;
+            top: 1.3125rem;
+            right: 0.625rem;
+            width: 0.875rem;
+            height: 0.4375rem;
+            content: "";
+            background-image: url('data:image/svg+xml;charset=utf8, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2014%207%22%3E%3Cpath%20d%3D%22M7%207L0%200h14L7%207z%22%2F%3E%3C%2Fsvg%3E');
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -64,10 +76,12 @@
                 </li>
 
                 <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a href="{{ route('homePage') }}" class="nav-link cursor-pointer" > {{ __('words.homePage') }}</a>
                     <a href="{{ route('posts') }}" class="nav-link cursor-pointer" > {{ __('words.posts') }}</a>
                     <a href="{{ route('categories') }}" class="nav-link cursor-pointer">{{ __('words.category') }}</a>
                     <a href="{{ route('settings') }}" class="nav-link cursor-pointer">{{ __('words.settings') }}</a>
                     <a href="{{ route('pages') }}" class="nav-link cursor-pointer">{{ __('words.pages') }}</a>
+                    <a href="{{ route('products') }}" class="nav-link cursor-pointer">{{ __('words.products') }}</a>
                     <div class="nav flex-column nav-pills ms-3 bg-secondary text-lighter" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link text-light active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                         <a class="nav-link text-light" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>

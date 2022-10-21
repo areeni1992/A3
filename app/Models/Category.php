@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\HomePageController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -10,6 +11,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Category extends Model
 {
     use HasFactory;
+    protected $table = 'categories';
+
 
     protected $fillable = ['name', 'slug', 'parent_id'];
 
@@ -31,6 +34,11 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function homePage()
+    {
+        return $this->belongsTo(HomePageController::class);
     }
 
 }

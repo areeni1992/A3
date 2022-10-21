@@ -8,7 +8,7 @@
         @method('POST')
         <div class='row d-flex'>
             @foreach( config('app.languages') as $key => $lang)
-                    <div class="col-md-6 @if($key == 'ar') {{ 'text-end' }} @endif">
+                <div class="col-md-6 @if($key == 'ar') {{ 'text-end' }} @endif">
                         <h4>{{ $lang }}</h4>
                       <!-- title  -->
                       <div class="form-outline mb-4">

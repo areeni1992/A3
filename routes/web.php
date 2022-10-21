@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomePageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,5 +80,35 @@ Route::group(
     Route::get('pages/edit/{id}', [PageController::class, 'edit'])->name('editPage');
     Route::put('pages/update/{id}', [PageController::class, 'update'])->name('updatePage');
     Route::get('pages/delete/{id}', [PageController::class, 'destroy'])->name('deletePage');
+
+});
+
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth'
+    ], function () {
+
+    Route::get('products', [ProductController::class, 'index'])->name('products');
+    Route::get('products/create', [ProductController::class, 'create'])->name('createProduct');
+    Route::post('products/store', [ProductController::class, 'store'])->name('storeProduct');
+    Route::get('products/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
+    Route::put('products/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
+    Route::get('products/delete/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
+
+});
+
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth'
+    ], function () {
+
+    Route::get('homepage', [HomePageController::class, 'index'])->name('homePage');
+    Route::post('homepage/store', [HomePageController::class, 'store'])->name('storeHomePage');
+//    Route::get('products/create', [HomePageController::class, 'create'])->name('createProduct');
+//    Route::get('products/edit/{id}', [HomePageController::class, 'edit'])->name('editProduct');
+//    Route::put('products/update/{id}', [HomePageController::class, 'update'])->name('updateProduct');
+//    Route::get('products/delete/{id}', [HomePageController::class, 'destroy'])->name('deleteProduct');
 
 });

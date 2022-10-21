@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,7 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('backend.product.index', compact('products'));
     }
 
     /**
@@ -25,7 +31,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where('parent_id', null)->get();
+
+
+        return view('backend.product.create', compact('categories'));
     }
 
     /**
@@ -36,7 +45,27 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+
+
+        if ($request->hasFile('image'))
+        {
+            $image  = Request::file('image');
+            $fileName = 'product'.'-'.time().'.'.$image->getClientOriginalExtension();
+
+            $newProd = Product::create(collect($validated)->except(['image', 'price'])->toArray());
+            $newProd->image = $image->storeAs('images', $fileName, 'public');
+            $newProd->price = $request->price;
+            $newProd->save();
+
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+        } else {
+            Product::create($validated + [
+                    Product::create($request->price)
+                ]);
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+        }
     }
 
     /**
@@ -56,9 +85,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::where('parent_id', null)->get();
+        return view('backend.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -70,7 +101,25 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $exactProduct = Product::find($request->id);
+//        dd($exactPage);
+
+        if ($request->hasFile('image'))
+        {
+            Storage::disk('public')->delete($exactProduct->image);
+            $image  = Request::file('image');
+            $fileName = 'page'.'-'.time().'.'.$image->getClientOriginalExtension();
+
+            $exactProduct->update(collect($request->validated())->except(['image'])->toArray());
+            $exactProduct->image = $image->storeAs('images', $fileName, 'public');
+            $exactProduct->save();
+
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+        } else {
+            $exactProduct->update($request->input());
+            return redirect()->back()->with('success', 'Post has been created successfully.');
+
+        }
     }
 
     /**
@@ -79,8 +128,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $exactProduct = Product::find($id);
+        $exactProduct->delete();
+        return redirect()->back()->with('success', 'Product has been Deleted successfully.');
     }
 }

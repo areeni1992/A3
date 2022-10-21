@@ -13,7 +13,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,16 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $data = [
+            'parent_id' => 'required',
+            'image' => ($this->method() == "POST" ? 'required|' : '') . 'mimes:jpeg,png,jpg,gif'
         ];
+        foreach (config('translatable.locales') as $lang )
+        {
+            $data[$lang.'*.name'] = 'required|string';
+            $data[$lang.'*.slug'] = 'string';
+            $data[$lang.'*.desc'] = 'string';
+        }
+        return $data;
     }
 }
