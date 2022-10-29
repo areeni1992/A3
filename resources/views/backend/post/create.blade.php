@@ -1,6 +1,25 @@
 @extends('backend.index')
 
 @section('content')
+    @if ($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <li class="alert alert-danger">{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
+
+    @if(\Session::has('error'))
+        <div>
+            <li class="alert alert-danger">{!! \Session::get('error') !!}</li>
+        </div>
+    @endif
+
+    @if(\Session::has('success'))
+        <div>
+            <li class="alert alert-success">{!! \Session::get('success') !!}</li>
+        </div>
+    @endif
     <a class="btn btn-success" href="{{ route('posts') }}">Posts Page</a>
     <form class='row justify-content-center flex-row' action="{{ route('storePost') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -52,23 +71,4 @@
         </div>
         <button type="submit" class="btn btn-primary btn-sm w-25 mb-4 mx-auto d-block">Save</button>
     </form>
-    @if ($errors->any())
-        <div>
-            @foreach ($errors->all() as $error)
-                <li class="alert alert-danger">{{ $error }}</li>
-            @endforeach
-        </div>
-    @endif
-
-    @if(\Session::has('error'))
-        <div>
-            <li class="alert alert-danger">{!! \Session::get('error') !!}</li>
-        </div>
-    @endif
-
-    @if(\Session::has('success'))
-        <div>
-            <li class="alert alert-success">{!! \Session::get('success') !!}</li>
-        </div>
-    @endif
 @endsection

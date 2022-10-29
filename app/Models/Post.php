@@ -2,14 +2,23 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Post extends Model
+class Post extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory, Translatable, Sluggable;
+    protected $translationForeignKey = 'post_id';
 
+    public $translatedAttributes  = [
+        'title',
+        'body',
+        'slug'
+    ];
     protected $fillable = ['title', 'body', 'slug', 'image', 'category_id'];
 
     protected static function boot()
@@ -28,9 +37,13 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-//    public function getImageAttrebute()
-//    {
-//        return asset('storage/'. $this->image);
-//    }
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'slug',
+            ]
+        ];
+    }
 
 }

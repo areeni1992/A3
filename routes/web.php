@@ -105,7 +105,7 @@ Route::group(
     ], function () {
 
     Route::get('homepage', [HomePageController::class, 'index'])->name('homePage');
-    Route::post('homepage/store', [HomePageController::class, 'store'])->name('storeHomePage');
+    Route::any('homepage/store/{id?}', [HomePageController::class, 'store'])->name('storeHomePage');
 //    Route::get('products/create', [HomePageController::class, 'create'])->name('createProduct');
 //    Route::get('products/edit/{id}', [HomePageController::class, 'edit'])->name('editProduct');
 //    Route::put('products/update/{id}', [HomePageController::class, 'update'])->name('updateProduct');

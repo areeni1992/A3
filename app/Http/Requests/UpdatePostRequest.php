@@ -23,12 +23,17 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title'     => 'required',
-            'slug'      => 'required|unique:categories',
+        $data = [
             'image'     => ($this->method() == "POST" ? 'required|' : '') . 'mimes:jpeg,png,jpg,gif',
-            'body'      => 'required',
             'category_id' => 'required'
         ];
+        foreach (config('translatable.locales') as $lang)
+        {
+            $data[$lang.'*.title']   = 'nullable|string';
+            $data[$lang.'*.body']    = 'nullable|string';
+            $data[$lang.'*.slug']    = 'nullable|string';
+        }
+
+        return $data;
     }
 }

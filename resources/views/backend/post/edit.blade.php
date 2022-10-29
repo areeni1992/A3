@@ -29,19 +29,6 @@
             @method('put')
             <div class="box-body">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Post Title*</label>
-                            <input type="text" name="title" class="form-control" placeholder="Category name" value="{{ $post->title }}" required />
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Post Slug*</label>
-                            <input type="text" name="slug" class="form-control" placeholder="Category name" value="{{ $post->slug }}" required />
-                        </div>
-                    </div>
 
                     <!-- image -->
                     <div class="form-outline mb-4 d-flex flex-column">
@@ -61,12 +48,30 @@
                             @endif
                         </select>
                     </div>
+                    @foreach(config('app.languages') as $key => $lang)
+                        <div class="col-md-6">
 
-                    <!-- body -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="body">body</label>
-                        <textarea class="form-control" id="myeditorinstance" rows="4" name="body">{{ $post->body }}</textarea>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Post Title*</label>
+                                <input type="text" name="{{$key}}[title]" class="form-control" placeholder="Category name" value="{{ $post->translate($key)->title ?? null }}" required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Post Slug*</label>
+                                <input type="text" name="{{$key}}[slug]" class="form-control" placeholder="Category slug" value="{{ $post->translate($key)->slug ?? null }}" required />
+                            </div>
+                        </div>
+
+                        <!-- body -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="body">body</label>
+                            <textarea class="form-control" id="myeditorinstance" rows="4" name="{{$key}}[body]">{{ $post->translate($key)->body ?? null }}</textarea>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             <div class="box-footer">

@@ -17,11 +17,11 @@ class CreatePostsTable extends Migration
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('body');
-            $table->string('slug');
-            $table->text('image');
-            $table->integer('category_id')->unsigned();
+            $table->string('title')->nullable();
+            $table->longText('body')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('image')->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->timestamps();
 

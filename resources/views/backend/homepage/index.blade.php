@@ -1,9 +1,29 @@
 @extends('backend.index')
 
 @section('content')
+    @if ($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <li class="alert alert-danger">{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
+
+    @if(\Session::has('error'))
+        <div>
+            <li class="alert alert-danger">{!! \Session::get('error') !!}</li>
+        </div>
+    @endif
+
+    @if(\Session::has('success'))
+        <div>
+            <li class="alert alert-success">{!! \Session::get('success') !!}</li>
+        </div>
+    @endif
     <h3>Home Page</h3>
-    <form action="{{ route('storeHomePage') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('storeHomePage', !empty($homeData->id) ? $homeData->id : '') }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div id="accordion-2" role="tablist" aria-multiselectable="true" class="o-accordion">
             {{--  Main Slide  --}}
             <div class="card multi my-2">
@@ -20,7 +40,10 @@
 
                         <div class="form-outline mb-4 w-50">
                             <label class="form-label" for="slider_image"> Image </label>
-                            <input type="file" id="slider_image" class="form-control" name="slider_image" onfocus="focused(this)" onfocusout="defocused(this)">
+                            @if(!empty($homeData->slider_image))
+                                <img src="{{ config('app.url').'/storage/images/'.$homeData->slider_image?? $homeData->slider_image }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                            @endif
+                            <input type="file" id="slider_image" class="form-control" name="image[slider_image]" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         @foreach(config('app.languages') as $key => $lang)
                             <div class="row ">
@@ -29,11 +52,11 @@
                                 </h4>
                                 <div class="form-outline mb-4 col-md-6">
                                     <label class="form-label" for="slider_title"> Title </label>
-                                    <input type="text" id="slider_title" class="form-control" name="{{$key}}[slider_title]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input type="text" id="slider_title" value="@if(!empty($homeData->slider_title)) {{$homeData->translate($key)->slider_title}} @endif" class="form-control" name="{{$key}}[slider_title]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                                 <div class="form-outline mb-4 col-md-6">
                                     <label class="form-label" for="slider_text"> Text </label>
-                                    <input type="text" id="slider_text" class="form-control" name="{{$key}}[slider_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input type="text" id="slider_text" value="@if(!empty($homeData->slider_text)) {{$homeData->translate($key)->slider_text}} @endif" class="form-control" name="{{$key}}[slider_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                             </div>
                         @endforeach
@@ -63,7 +86,7 @@
                                         </option>
                                         @if(count($c->subcategory))
                                             @foreach($c->subcategory as $sub)
-                                                <option value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
+                                                <option @if(isset($arr[0]) && $sub->id == $arr[0]) selected @endif value="{{$sub->id}}">--{{$sub->name}}</option>
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -89,15 +112,20 @@
                         <div class="form-group mx-auto">
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
-                                <select id="category" class="form-control" name="page_id[first]">
-                                    <option value="">
-                                    <option value=""> -- </option>
-                                    </option>
+                                <select id="category" class="form-control" name="page_ids[first]">
+                                    @if(isset($arr_2))
+                                        @foreach($pages as $page)
+                                            <option @if(isset($arr_2[0]) && $page->id == $arr_2[0]) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
 
                                 <div class="form-outline mb-4 w-50">
                                     <label class="form-label" for="first_banner"> Image </label>
-                                    <input type="file" id="first_banner" class="form-control" name="first_banner" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    @if(!empty($homeData->first_banner))
+                                        <img src="{{ config('app.url').'/storage/images/'.$homeData->first_banner ?? $homeData->first_banner }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                                    @endif
+                                    <input type="file" id="first_banner" class="form-control" name="image[first_banner]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                                 @foreach(config('app.languages') as $key => $lang)
                                     <div class="row ">
@@ -106,7 +134,7 @@
                                         </h4>
                                         <div class="form-outline mb-4 col-md-6">
                                             <label class="form-label" for="first_banner_text"> Text </label>
-                                            <input type="text" id="first_banner_text" class="form-control" name="{{$key}}[first_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                            <input type="text" id="first_banner_text" class="form-control" value="@if(!empty($homeData->first_banner_text)) {{$homeData->translate($key)->first_banner_text}} @endif" name="{{$key}}[first_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                         </div>
                                     </div>
                                 @endforeach
@@ -131,15 +159,20 @@
                         <div class="form-group mx-auto">
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
-                                <select id="category" class="form-control" name="page_id[second]">
-                                    <option value="">
-                                    <option value=""> -- </option>
-                                    </option>
+                                <select id="category" class="form-control" name="page_ids[second]">
+                                    @if(isset($arr_2))
+                                    @foreach($pages as $page)
+                                            <option @if(isset($arr_2[1]) && $arr_2[1] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
 
                                 <div class="form-outline mb-4 w-50">
                                     <label class="form-label" for="second_banner"> Image </label>
-                                    <input type="file" id="second_banner" class="form-control" name="second_banner[]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    @if(!empty($homeData->second_banner))
+                                        <img src="{{ config('app.url').'/storage/images/'.$homeData->second_banner?? $homeData->second_banner }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                                    @endif
+                                    <input type="file" id="second_banner" class="form-control" name="image[second_banner]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                                 @foreach(config('app.languages') as $key => $lang)
                                     <div class="row ">
@@ -148,7 +181,7 @@
                                         </h4>
                                         <div class="form-outline mb-4 col-md-6">
                                             <label class="form-label" for="second_banner_text"> Text </label>
-                                            <input type="text" id="second_banner_text" class="form-control" name="{{$key}}[second_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                            <input type="text" id="second_banner_text" class="form-control" value="@if(!empty($homeData->second_banner_text)) {{$homeData->translate($key)->second_banner_text}} @endif" name="{{$key}}[second_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                         </div>
                                     </div>
                                 @endforeach
@@ -180,7 +213,7 @@
                                         </option>
                                         @if(count($c->subcategory))
                                             @foreach($c->subcategory as $sub)
-                                                <option value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
+                                                <option @if(isset($arr[1]) && $sub->id == $arr[1]) selected @endif value="{{$sub->id}}">--{{$sub->name}}</option>
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -205,19 +238,27 @@
                     <div class="card-block">
                         <div class="form-outline">
                             <label for="category">choose Page: </label>
-                            <select id="category" class="form-control" name="page_id[third]">
-                                <option value="">
-                                <option value=""> -- </option>
-                                </option>
+                            <select id="category" class="form-control" name="page_ids[third]">
+                                @if(isset($arr_2))
+                                    @foreach($pages as $page)
+                                        <option @if(isset($arr_2[2]) && $arr_2[2] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-outline mb-4 w-40 d-inline-block me-3">
                             <label class="form-label" for="third_banner_left"> Left Image </label>
-                            <input type="file" id="third_banner_left" class="form-control" name="third_banner_left" onfocus="focused(this)" onfocusout="defocused(this)">
+                            @if(!empty($homeData->third_banner_left))
+                                <img src="{{ config('app.url').'/storage/images/'.$homeData->third_banner_left?? $homeData->third_banner_left }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                            @endif
+                            <input type="file" id="third_banner_left" class="form-control" name="image[third_banner_left]" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         <div class="form-outline mb-4 w-40 d-inline-block">
                             <label class="form-label" for="third_banner_right"> Right Image </label>
-                            <input type="file" id="third_banner_right" class="form-control" name="third_banner_right" onfocus="focused(this)" onfocusout="defocused(this)">
+                            @if(!empty($homeData->third_banner_right))
+                                <img src="{{ config('app.url').'/storage/images/'.$homeData->third_banner_right?? $homeData->third_banner_right }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                            @endif
+                            <input type="file" id="third_banner_right" class="form-control" name="image[third_banner_right]" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         @foreach(config('app.languages') as $key => $lang)
                             <div class="row ">
@@ -226,11 +267,11 @@
                                 </h4>
                                 <div class="form-outline mb-4 col-md-6">
                                     <label class="form-label" for="third_banner_title"> Title </label>
-                                    <input type="text" id="third_banner_title" class="form-control" name="{{$key}}[third_banner_title]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input type="text" id="third_banner_title" class="form-control" value="@if(!empty($homeData->third_banner_title)) {{$homeData->translate($key)->third_banner_title}} @endif" name="{{$key}}[third_banner_title]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                                 <div class="form-outline mb-4 col-md-6">
                                     <label class="form-label" for="third_banner_text"> Text </label>
-                                    <input type="text" id="third_banner_text" class="form-control" name="{{$key}}[third_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input type="text" id="third_banner_text" class="form-control" value="@if(!empty($homeData->third_banner_text)) {{$homeData->translate($key)->third_banner_text}} @endif" name="{{$key}}[third_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                             </div>
                         @endforeach
@@ -260,7 +301,7 @@
                                         </option>
                                         @if(count($c->subcategory))
                                             @foreach($c->subcategory as $sub)
-                                                <option value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
+                                                <option @if(isset($arr[2]) && $sub->id == $arr[2]) selected @endif value="{{$sub->id}}">--{{$sub->name}}</option>
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -286,15 +327,20 @@
                         <div class="form-group mx-auto">
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
-                                <select id="category" class="form-control" name="page_id[last]">
-                                    <option value="">
-                                    <option value=""> -- </option>
-                                    </option>
+                                <select id="category" class="form-control" name="page_ids[last]">
+                                    @if(isset($arr_2))
+                                        @foreach($pages as $page)
+                                            <option @if(isset($arr_2[3]) && $arr_2[3] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
 
                                 <div class="form-outline mb-4 w-50">
                                     <label class="form-label" for="fourth_banner"> Image </label>
-                                    <input type="file" id="first_banner" class="form-control" name="first_banner" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    @if(!empty($homeData->fourth_banner))
+                                        <img src="{{ config('app.url').'/storage/images/'.$homeData->fourth_banner?? $homeData->fourth_banner }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                                    @endif
+                                    <input type="file" id="fourth_banner" class="form-control" name="image[fourth_banner]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                                 @foreach(config('app.languages') as $key => $lang)
                                     <div class="row ">
@@ -303,11 +349,11 @@
                                         </h4>
                                         <div class="form-outline mb-4 col-md-6">
                                             <label class="form-label" for="fourth_banner_title"> Title </label>
-                                            <input type="text" id="fourth_banner_title" class="form-control" name="{{$key}}[fourth_banner_title]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                            <input type="text" id="fourth_banner_title" class="form-control" value="@if(!empty($homeData->fourth_banner_title)) {{$homeData->translate($key)->fourth_banner_title}} @endif" name="{{$key}}[fourth_banner_title]" onfocus="focused(this)" onfocusout="defocused(this)">
                                         </div>
                                         <div class="form-outline mb-4 col-md-6">
                                             <label class="form-label" for="fourth_banner_text"> Text </label>
-                                            <input type="text" id="fourth_banner_text" class="form-control" name="{{$key}}[fourth_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                            <input type="text" id="fourth_banner_text" class="form-control" value="@if(!empty($homeData->fourth_banner_text)) {{$homeData->translate($key)->fourth_banner_text}} @endif" name="{{$key}}[fourth_banner_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                         </div>
                                     </div>
                                 @endforeach
@@ -339,7 +385,7 @@
                                         </option>
                                         @if(count($c->subcategory))
                                             @foreach($c->subcategory as $sub)
-                                                <option value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
+                                                <option @if(isset($arr[3]) && $sub->id == $arr[3]) selected @endif value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -365,10 +411,16 @@
 
                         <div class="form-outline mb-4 w-40 d-inline-block me-3">
                             <label class="form-label" for="catalog_image"> Background Image </label>
-                            <input type="file" id="catalog_image" class="form-control" name="catalog_image" onfocus="focused(this)" onfocusout="defocused(this)">
+                            @if(!empty($homeData->catalog_image))
+                                <img src="{{ config('app.url').'/storage/images/'.$homeData->catalog_image?? $homeData->catalog_image }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">
+                            @endif
+                            <input type="file" id="catalog_image" class="form-control" name="image[catalog_image]" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         <div class="form-outline mb-4 w-40 d-inline-block">
                             <label class="form-label" for="catalog"> Catalog File </label>
+                            @if(!empty($homeData->catalog))
+                                <a href="{{ config('app.url').'/storage/images/'.$homeData->catalog?? $homeData->catalog }}" class="img w-40 img-thumbnail me-3" style="height: 118px!important;" alt="img">Download</a>
+                            @endif
                             <input type="file" id="catalog" class="form-control" name="catalog" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         @foreach(config('app.languages') as $key => $lang)
@@ -378,7 +430,7 @@
                                 </h4>
                                 <div class="form-outline mb-4 col-md-6">
                                     <label class="form-label" for="catalog_text"> Text </label>
-                                    <input type="text" id="catalog_text" class="form-control" name="{{$key}}[catalog_text]" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input type="text" id="catalog_text" class="form-control" value="@if(!empty($homeData->catalog_text)) {{$homeData->translate($key)->catalog_text}} @endif" name="{{$key}}[catalog_text]" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
                             </div>
                         @endforeach
@@ -408,7 +460,7 @@
                                         </option>
                                         @if(count($c->subcategory))
                                             @foreach($c->subcategory as $sub)
-                                                <option value="{{ $sub->id }}"> -- {{ $sub->name }}</option>
+                                                <option @if(isset($arr[4]) && $sub->id == $arr[4]) selected @endif value="{{$sub->id}}">--{{$sub->name}}</option>
                                             @endforeach
                                         @endif
                                     @endforeach

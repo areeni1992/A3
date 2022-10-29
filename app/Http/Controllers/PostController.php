@@ -44,13 +44,20 @@ class PostController extends Controller
     {
 
             $validated = $request->validated();
-            Post::create([
-                'title' => $request->title,
-                'slug' => $request->slug,
-                'image' => $request->file('image')->store('images', 'public'),
-                'body' => $request->body,
-                'category_id' =>$request->category_id,
-            ]);
+            if ($request->hasFile('image'))
+            {
+                $image  = Request::file('image');
+                $fileName = 'product'.'-'.time().'.'.$image->getClientOriginalExtension();
+                $newPost = Post::create(collect($validated)->except(['image', 'category_id'])->toArray());
+                $newPost->image = $image->storeAs('images', $fileName, 'public');
+                $newPost->category_id = $request->category_id;
+                $newPost->save();
+            } else {
+                Post::create($validated + [
+                        Post::create($request->category_id)
+                    ]);
+                return redirect()->back()->with('success', 'Post has been created successfully.');
+            }
 
             return redirect()->back()->with('success', 'Post has been created successfully.');
     }

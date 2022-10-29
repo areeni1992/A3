@@ -2,19 +2,28 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\HomePageController;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Cviebrock\EloquentSluggable\Sluggable;
-
-class Category extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Category extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory, Translatable, Sluggable;
     protected $table = 'categories';
-
-
+    protected $translationForeignKey = 'category_id';
+    public $translatedAttributes  = ['name', 'slug'];
     protected $fillable = ['name', 'slug', 'parent_id'];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'slug',
+            ]
+        ];
+    }
+
 
     public function subcategory()
     {
@@ -36,9 +45,5 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function homePage()
-    {
-        return $this->belongsTo(HomePageController::class);
-    }
 
 }

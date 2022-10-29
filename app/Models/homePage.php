@@ -12,7 +12,7 @@ class homePage extends Model implements TranslatableContract
 {
     use HasFactory, Translatable, Sluggable;
 
-    protected $table = 'home_page';
+    protected $table = 'home_pages';
     protected $translationForeignKey = 'home_id';
     public $translatedAttributes  = [
         'slider_title',
@@ -29,8 +29,8 @@ class homePage extends Model implements TranslatableContract
         'slider_image',
         'slider_title',
         'slider_text',
-        'cat_id',
-        'page_id',
+        'cat_ids',
+        'page_ids',
         'first_banner',
         'first_banner_text',
         'second_banner',
@@ -48,10 +48,7 @@ class homePage extends Model implements TranslatableContract
     ];
 
 
-    public function category()
-    {
-        return $this->hasMany(Category::class);
-    }
+    protected $casts = ['cat_ids' => 'array', 'page_ids' => 'array'];
 
     public function sluggable(): array
     {

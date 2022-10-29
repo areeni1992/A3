@@ -10,19 +10,25 @@
             @csrf
             <div class="box-body">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Category name*</label>
-                            <input type="text" name="name" class="form-control" placeholder="Category name" value="{{ $cats->name }}" required />
-                        </div>
-                    </div>
+                    @foreach( config('app.languages') as $key => $lang)
+                        <div class="col-md-6 @if($key == 'ar') {{ 'text-end' }} @endif">
+                            <h4>{{ $lang }}</h4>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Category name*</label>
+                                    <input type="text" name="{{$key}}[name]" value="{{ $cats->translate($key)->name }}" class="form-control" placeholder="Category name" value="{{old('name')}}" required />
+                                </div>
+                            </div>
 
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Category Slug*</label>
-                            <input type="text" name="slug" class="form-control" placeholder="Category name" value="{{ $cats->slug }}" required />
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Category Slug*</label>
+                                    <input type="text" value="{{ $cats->translate($key)->slug }}" name="{{$key}}[slug]" class="form-control" placeholder="Category name" value="{{old('slug')}}" required />
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="box-footer">

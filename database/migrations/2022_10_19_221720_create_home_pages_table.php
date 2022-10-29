@@ -20,11 +20,8 @@ class CreateHomePagesTable extends Migration
             $table->string('slider_title')->nullable();
             $table->string('slider_text')->nullable();
 
-            $table->integer('cat_id')->unsigned()->nullable();
-            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
-
-            $table->integer('page_id')->unsigned()->nullable();
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->json('cat_ids')->nullable();
+            $table->json('page_ids')->nullable();
 
             $table->text('first_banner')->nullable();
             $table->string('first_banner_text')->nullable();

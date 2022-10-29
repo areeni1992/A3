@@ -12,7 +12,11 @@
                             <li class="list-group-item">
                                 @if($cat->parent_id == null)
                                     <div class="d-flex justify-content-between">
-                                        {{ $cat->name }}
+                                        @foreach(config('app.languages') as $key => $langs)
+                                         <div class="@if($langs == 'ar' ) float-end @endif" >
+                                           <span class="font-weight-bold text-danger">{{ $langs }} |</span> {{ $cat->translate($key)->name }}
+                                         </div>
+                                        @endforeach
                                         <div class="button-group d-flex">
                                             <a href="{{ Route('editCategory', $cat->id) }}" class="btn btn-sm btn-primary mr-1 edit-category">
                                                 Edit
@@ -28,7 +32,11 @@
                                         @foreach ($cat->subcategory as $sub)
                                             <li class="list-group-item">
                                                 <div class="d-flex justify-content-between">
-                                                    {{ $sub->name }}
+                                                    @foreach(config('app.languages') as $key => $langs)
+                                                        <div class="@if($langs == 'ar' ) float-end @endif" >
+                                                            <span class="font-weight-bold text-danger">{{ $langs }} |</span> {{ $sub->translate($key)->name }}
+                                                        </div>
+                                                    @endforeach
 
                                                     <div class="button-group d-flex">
                                                         <a href="{{ Route('editCategory', $sub->id) }}" class="btn btn-sm btn-primary mr-1 edit-category">

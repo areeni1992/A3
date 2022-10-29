@@ -29,17 +29,19 @@ class CategoryController extends Controller
         }
         if($request->method() =='POST')
         {
-            $validator = $request->validate([
-                'name'      => 'required',
-                'slug'      => 'required|unique:categories',
-                'parent_id' => 'nullable|numeric'
-            ]);
 
-            Category::create([
-                'name' => $request->name,
-                'slug' => $request->slug,
-                'parent_id' =>$request->parent_id
-            ]);
+            $data = [
+                'parent_id' => 'nullable|numeric'
+            ];
+            foreach (config('translatable.locales') as $lang )
+            {
+                $data[$lang.'*.name'] = 'required|string';
+                $data[$lang.'*.slug'] = 'string';
+            }
+
+            $validator = $request->validate($data);
+//            dd($validator);
+            Category::create($validator);
 
             return redirect()->back()->with('success', 'Category has been created successfully.');
         }
@@ -55,13 +57,17 @@ class CategoryController extends Controller
     public function updateCategory(Request $request, $id)
     {
 
-        $validatedData = $this->validate($request, [
-            'name'  => 'required|min:3|max:255|string',
-            'slug' => 'required|unique:categories'
-        ]);
+        $data = [];
+        foreach (config('translatable.locales') as $lang )
+        {
+            $data[$lang.'*.name'] = 'required|string';
+            $data[$lang.'*.slug'] = 'string';
+        }
+
+        $validator = $request->validate($data);
 
         $category = Category::find($id);
-        $category->update($validatedData);
+        $category->update($validator);
 
         return redirect()->route('categories')->withSuccess('You have successfully updated a Category!');
     }
