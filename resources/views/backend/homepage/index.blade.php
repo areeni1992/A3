@@ -113,9 +113,9 @@
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
                                 <select id="category" class="form-control" name="page_ids[first]">
-                                    @if(isset($arr_2))
+                                    @if(isset($pages))
                                         @foreach($pages as $page)
-                                            <option @if(isset($arr_2[0]) && $page->id == $arr_2[0]) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                            <option @if(isset($arr_2['first']) ? $arr_2['first']  == $page->id : '') selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -160,9 +160,9 @@
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
                                 <select id="category" class="form-control" name="page_ids[second]">
-                                    @if(isset($arr_2))
+                                    @if(isset($pages))
                                     @foreach($pages as $page)
-                                            <option @if(isset($arr_2[1]) && $arr_2[1] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                            <option @if(isset($arr_2['second']) ? $arr_2['second']  == $page->id : '') selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -239,9 +239,9 @@
                         <div class="form-outline">
                             <label for="category">choose Page: </label>
                             <select id="category" class="form-control" name="page_ids[third]">
-                                @if(isset($arr_2))
+                                @if(isset($pages))
                                     @foreach($pages as $page)
-                                        <option @if(isset($arr_2[2]) && $arr_2[2] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                        <option @if(isset($arr_2['third']) ? $arr_2['third']  == $page->id : '') selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -328,9 +328,9 @@
                             <div class="form-check px-3">
                                 <label for="category">choose Page: </label>
                                 <select id="category" class="form-control" name="page_ids[last]">
-                                    @if(isset($arr_2))
+                                    @if(isset($pages))
                                         @foreach($pages as $page)
-                                            <option @if(isset($arr_2[3]) && $arr_2[3] == $page->id) selected @endif value="{{ $page->id }}">{{ $page->title }}</option>
+                                            <option @if(isset($arr_2['last']) ? $arr_2['last']  == $page->id : '') selected @endif value="{{ $page->id}}">{{ $page->title}}</option>
                                         @endforeach
                                     @endif
                                 </select>

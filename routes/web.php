@@ -19,9 +19,11 @@ use App\Http\Controllers\Layouts\HomePage\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('posts/show/{slug}', [HomeController::class, 'showPage'])->name('showPage');
+Route::get('pages/show/{slug}', [HomeController::class, 'showPage'])->name('showPage');
+Route::get('posts/show/{post}', [HomeController::class, 'showPost'])->name('showPost');
+Route::get('posts/categories/{id?}', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

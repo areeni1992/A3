@@ -90,7 +90,7 @@ class PageController extends Controller
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePageRequest $request)
+    public static function update(UpdatePageRequest $request)
     {
         $exactPage = Page::find($request->id);
 //        dd($exactPage);
@@ -101,13 +101,13 @@ class PageController extends Controller
             $image  = Request::file('image');
             $fileName = 'page'.'-'.time().'.'.$image->getClientOriginalExtension();
 
-            $exactPage->update(collect($request->validated())->except(['image'])->toArray());
+            $exactPage->update(collect($exactPage)->except(['image'])->toArray());
             $exactPage->image = $image->storeAs('images', $fileName, 'public');
             $exactPage->save();
 
             return redirect()->back()->with('success', 'Post has been created successfully.');
         } else {
-            Page::update($request->input());
+            $exactPage->update($request->input());
             return redirect()->back()->with('success', 'Post has been created successfully.');
 
         }

@@ -21,7 +21,7 @@
                                             <a href="{{ Route('editCategory', $cat->id) }}" class="btn btn-sm btn-primary mr-1 edit-category">
                                                 Edit
                                             </a>
-                                            <a  href="{{ route('deleteCategory', $cat->id) }}" class="btn btn-sm btn-danger">
+                                            <a href="{{ route('deleteCategory', $cat->id) }}" class="btn btn-sm btn-danger">
                                                 Delete
                                             </a>
                                         </div>
@@ -30,19 +30,17 @@
                                 @if ($cat->subcategory)
                                     <ul class="list-group mt-2">
                                         @foreach ($cat->subcategory as $sub)
-                                            <li class="list-group-item">
+                                            <li class="list-group-item bg-light">
                                                 <div class="d-flex justify-content-between">
                                                     @foreach(config('app.languages') as $key => $langs)
                                                         <div class="@if($langs == 'ar' ) float-end @endif" >
-                                                            <span class="font-weight-bold text-danger">{{ $langs }} |</span> {{ $sub->translate($key)->name }}
+                                                           <span class="font-weight-bold text-danger">{{ $langs }} |</span> {{ $sub->translate($key)->name }}
                                                         </div>
                                                     @endforeach
-
                                                     <div class="button-group d-flex">
                                                         <a href="{{ Route('editCategory', $sub->id) }}" class="btn btn-sm btn-primary mr-1 edit-category">
                                                             Edit
                                                         </a>
-
                                                         <a href="{{ Route('deleteCategory', $sub->id) }}" class="btn btn-sm btn-danger">
                                                             Delete
                                                         </a>

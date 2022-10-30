@@ -8,8 +8,10 @@ use App\Http\Requests\StorehomePageRequest;
 use App\Http\Requests\UpdatehomePageRequest;
 use App\Models\Page;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\isNull;
 
 class HomePageController extends Controller
 {
@@ -44,12 +46,13 @@ class HomePageController extends Controller
             $pages_input = $page_ids['page_ids'];
             $cats = $cat_ids['cat_ids'];
 
-            $decod_cats = json_decode(json_encode($cats), true);
-            $decod_pages = json_decode(json_encode($pages_input), true);
+            $decod_cats = (array)json_encode($cats, true);
+            $decod_pages = (array)json_encode($pages_input, true);
 
             if (is_array($decod_cats) || is_array($decod_pages))
-                {
-                    foreach ($decod_pages as $key => $page) {
+            {
+
+                foreach ($decod_pages as $key => $page) {
                         if ($key == 'first') {
                             $this->page_1 = $page;
                         }
@@ -63,7 +66,6 @@ class HomePageController extends Controller
                             $this->page_4 = $page;
                         }
                     }
-                    stripslashes($page);
                     $page_1 = $this->page_1;
                     $page_2 = $this->page_2;
                     $page_3 = $this->page_3;
@@ -123,13 +125,14 @@ class HomePageController extends Controller
     public function store(StorehomePageRequest $request)
     {
         $validated = $request->validated();
-        $data = $request->file('image');;
+        $data = $request->file('image');
         $cat_ids = $request->cat_ids;
         $page_ids = $request->page_id;
+        $catalogFile = $request->file('catalog');
         $json_page = json_encode($page_ids, JSON_UNESCAPED_SLASHES);
         $json_data = json_encode($cat_ids, JSON_UNESCAPED_SLASHES);
 
-        if ($request->id == null) {
+        if ($request->method() == 'POST' && empty($validated)) {
             if ($request->hasFile('image') || $request->hasFile('catalog')) {
                 foreach ($data as $file) {
 
@@ -186,26 +189,29 @@ class HomePageController extends Controller
                 return redirect()->back()->with('success', 'Post has been created successfully.');
 
             } else {
-
                 $newProd = homePage::create($validated);
                 $newProd->cat_ids = $json_data;
                 $newProd->page_ids = $json_page;
                 $newProd->save();
                 return redirect()->back()->with('success', 'Post has been created successfully.');
             }
-        }else {
+        }
+        else{
             $exactData = homePage::find($request->id);
             if ($request->hasFile('image') || $request->hasFile('catalog')) {
-                if (isset($data))
+                if (!isNull($data))
                 {
-
                     foreach ($data as $file) {
-                        Storage::disk('public')->delete($exactData->image);
+                        if (File::exists(public_path('storage/images/'.$file)))
+                        {
+                            Storage::disk('public')->delete($exactData->image);
+                        }
+
                         $name = 'homePage'.'-'.time().'.'.$file->getClientOriginalName();
                         $file->storeAs('images', $name, 'public');
-                        $exactData->update($validated);
                         $exactData->cat_ids = stripslashes($json_data);
                         $exactData->page_ids = stripslashes($json_page);
+                        $exactData->update($validated);
                         $exactData->save();
 
                         if (isset($data['slider_image'])) {
@@ -251,9 +257,14 @@ class HomePageController extends Controller
                 return redirect()->back()->with('success', 'Post has been created successfully.');
 
             } else {
-                $exactData->update($validated);
-                $exactData->save();
+                if ($exactData !== null)
+                {
+                    $exactData->update($validated);
+                    $exactData->save();
+                    return redirect()->back()->with('success', 'Post has been created successfully.');
+                }
                 return redirect()->back()->with('success', 'Post has been created successfully.');
+
             }
         }
     }

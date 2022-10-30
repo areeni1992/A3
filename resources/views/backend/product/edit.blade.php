@@ -31,17 +31,17 @@
                     <!-- name  -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="name"> {{ __('words.title') }} </label>
-                        <input type="text" id="title" class="form-control" name="{{$key}}[name]" value="{{ $product->name }}"/>
+                        <input type="text" id="title" class="form-control" name="{{$key}}[name]" value="{{ $product->translate($key)->name }}"/>
                     </div>
                     <!-- slug  -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="slug">{{ __('words.slug') }}</label>
-                        <input type="text" id="slug" class="form-control" name="{{$key}}[slug]" value="{{ $product->slug }}"/>
+                        <input type="text" id="slug" class="form-control" name="{{$key}}[slug]" value="{{ $product->translate($key)->slug }}"/>
                     </div>
                     <!-- body -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="desc">{{ __('words.content') }}</label>
-                        <textarea class="form-control" id="myeditorinstance" rows="4" name="{{$key}}[desc]">{{ $product->desc }}</textarea>
+                        <textarea class="form-control" id="myeditorinstance" rows="4" name="{{$key}}[desc]">{{ $product->translate($key)->desc }}</textarea>
                     </div>
                 </div>
             @endforeach

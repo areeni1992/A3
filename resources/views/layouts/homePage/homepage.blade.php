@@ -6,19 +6,16 @@
     <section>
         <header>
             <!--Start Hedaer Title -->
-            <div class="title-header">
+            <div class="title-header text-center" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->slider_image }})">
                 <div
-                    class="container d-flex flex-column justify-content-center text-white"
+                    class="container d-flex flex-column text-center justify-content-center align-center align-items-center text-white"
                 >
                     <h1>
-                        Custom apparel <br />
-                        as great as you are.
+                        {{ $sectionsData->translate(app()->getLocale())->slider_title }}
                     </h1>
-                    <p class="fs-5 mt-1">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
-                        eligendi maxime fugiat error dolorem esse nulla cumque magnam
+                    <p class="fs-5 mt-1 text-center">
+                        {{ $sectionsData->translate(app()->getLocale())->slider_text }}
                     </p>
-                    <button class="btn title-btn mt-2 p-2">SHOP NOW</button>
                 </div>
             </div>
             <!--End Hedaer Title -->
@@ -29,78 +26,18 @@
     <section>
         <div class="container-fluid my-5">
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
-                <div class="item">
-                    <img
-                        src="assets/img/slider.jpg"
-                        alt="Error In Download the image"
-                    />
-                    <h5>AIR JORDAN RETRO</h5>
-                    <h6>AED1,099,00</h6>
-                </div>
+                @foreach($products as $pro)
+                    @if($sectionsData->cat_ids[1] == $pro->parent_id)
+                    <div class="item">
+                        <img
+                            src="{{ config('app.url').'/storage/'.$pro->image }}"
+                            alt="Error In Download the image"
+                        />
+                        <h5>{{ $pro->translate(app()->getLocale())->name }}</h5>
+                        <h6>AED {{ $pro->price }}</h6>
+                    </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
@@ -108,20 +45,13 @@
 
     <!-- Start Sport Clothes -->
     <section>
-        <div class="clothes my-5">
+        <div class="clothes my-5" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->first_banner }})">
             <div class="container h-100 d-flex flex-column justify-content-center">
                 <div class="clothes-title text-white">
-                    <img
-                        src="assets/img/logo.jpg"
-                        alt="Error in Download The Image"
-                        width="100"
-                        class="rounded-circle clothes-img"
-                    />
                     <h3 class="mt-4">
-                        BEST STORE FOR SPORT <br />
-                        CLOTHES
+                        {{ $sectionsData->translate(app()->getLocale())->first_banner_text }}
                     </h3>
-                    <button class="btn mt-3 clothes-btn">SHOP NOW</button>
+                    <a class="btn mt-3 clothes-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids)) ? $sectionsData['first'] : '' }}">SHOP NOW</a>
                 </div>
             </div>
         </div>
@@ -132,13 +62,13 @@
     <section>
         <div class="market my-5">
             <div class="container h-75 d-flex flex-column justify-content-center">
-                <h4 class="text-black">WELCOME TO THE MARKET</h4>
-                <button class="btn market-btn bg-black text-white mt-2">
+                <h4 class="text-black">{{ $sectionsData->translate(app()->getLocale())->second_banner_text }}</h4>
+                <a class="btn market-btn bg-black text-white mt-2" href="{{ route('showPage', is_array($sectionsData->page_ids)) ? $sectionsData['second'] : ''}}">
                     SHOP NOW
-                </button>
+                </a>
 
                 <img
-                    src="assets/img/market-1.png"
+                    src="{{ config('app.url').'/storage/images/'.$sectionsData->second_banner }}"
                     alt="Error In Download The Image"
                     class="market-img1 img-fluid d-none d-lg-block"
                     width="700"
@@ -160,78 +90,18 @@
         <div class="box-two">
             <div class="container-fluid my-5">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
+                    @foreach($products as $pro)
+                        @if($sectionsData->cat_ids[2] == $pro->parent_id)
+                            <div class="item">
+                                <img
+                                    src="{{ config('app.url').'/storage/'.$pro->image }}"
+                                    alt="Error In Download the image"
+                                />
+                                <h5>{{ $pro->translate(app()->getLocale())->name }}</h5>
+                                <h6>AED {{ $pro->price }}</h6>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -245,9 +115,9 @@
                 <div class="row">
                     <div class="col-lg-4 p-0 d-none d-lg-block">
                         <img
-                            src="assets/img/apparel-1.png"
+                            src="{{ config('app.url').'/storage/images/'.$sectionsData->third_banner_left }}"
                             alt="Error I Download The Image"
-                            class="img-fluid"
+                            class="img-fluid w-100"
                             width="500"
                         />
                     </div>
@@ -256,19 +126,18 @@
                             class="bg-black text-white h-100 d-flex flex-column justify-content-center align-items-center text-center p-5"
                         >
                             <h3>
-                                Cusotm apparel <br />
-                                as great as you are.
+                                {{ $sectionsData->translate(app()->getLocale())->third_banner_title }}
                             </h3>
                             <p class="my-3 text-white-50">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Autem, aspernatur?
+                                {{ $sectionsData->translate(app()->getLocale())->third_banner_text }}
+
                             </p>
-                            <button class="btn apperal-btn">SHOP NOW</button>
+                            <a class="btn apperal-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids)) ? $sectionsData['third'] : '' }}">SHOP NOW</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 p-0 d-none d-lg-block d-md-block">
                         <img
-                            src="assets/img/apparel-2.png"
+                            src="{{ config('app.url').'/storage/images/'.$sectionsData->third_banner_right }}"
                             alt="Error I Download The Image"
                             class="img-fluid"
                             width="500"
@@ -285,78 +154,18 @@
         <div class="box-three">
             <div class="container-fluid my-5">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
+                    @foreach($products as $pro)
+                        @if($sectionsData->cat_ids[3] == $pro->parent_id)
+                            <div class="item">
+                                <img
+                                    src="{{ config('app.url').'/storage/'.$pro->image }}"
+                                    alt="Error In Download the image"
+                                />
+                                <h5>{{ $pro->translate(app()->getLocale())->name }}</h5>
+                                <h6>AED {{ $pro->price }}</h6>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -365,11 +174,11 @@
 
     <!-- Start Loyalty Program -->
     <section>
-        <div class="loyal">
+        <div class="loyal" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->fourth_banner }})">
             <div class="container h-100 d-flex flex-column justify-content-center">
-                <h2><span>LOYALTY</span> PROGRAM</h2>
-                <p class="text-muted">a program for loyal customers</p>
-                <button class="btn loyal-btn py-2">LEARN MORE</button>
+                <h2><span>{{ $sectionsData->translate(app()->getLocale())->fourth_banner_title }}</span></h2>
+                <p class="text-muted">{{ $sectionsData->translate(app()->getLocale())->fourth_banner_text }}</p>
+                <a class="btn loyal-btn py-2" href="{{ route('showPage', $sectionsData->page_ids['last']) }}">LEARN MORE</a>
             </div>
         </div>
     </section>
@@ -380,78 +189,18 @@
         <div class="box-three">
             <div class="container-fluid my-5">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
+                    @foreach($products as $pro)
+                        @if($sectionsData->cat_ids[4] == $pro->parent_id)
+                            <div class="item">
+                                <img
+                                    src="{{ config('app.url').'/storage/'.$pro->image }}"
+                                    alt="Error In Download the image"
+                                />
+                                <h5>{{ $pro->translate(app()->getLocale())->name }}</h5>
+                                <h6>AED {{ $pro->price }}</h6>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -466,6 +215,7 @@
                     <div class="col-lg-5 col-md-6 col-sm-12 p-0">
                         <div
                             class="newsLetter-img p-5 h-100 d-flex flex-column justify-content-center align-content-center text-white"
+                            style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->catalog_image }}"
                         >
                             <h3 class="text-nowrap">SUBSCRIBE TO NEWSLETTER</h3>
                             <form>
@@ -485,11 +235,12 @@
                     <div class="col-lg-7 col-md-6 col-sm-12 p-0">
                         <div
                             class="gymFloor text-white d-flex flex-column justify-content-center justify-content-lg-end p-4"
+                            style='background-image: url({{asset('/images/newsLetter-1.jpg') }})'
                         >
-                            <h3>ATX &GYMFLOOR 2021-2022</h3>
-                            <button class="btn btn-light gymFloor-btn mb-3">
+                            <h3>{{ $sectionsData->catalog_text }}</h3>
+                            <a class="btn btn-light gymFloor-btn mb-3" href="{{ config('app.url').'/storage/images/'.$sectionsData->catalog }}">
                                 DOWNLOAD CATALOG
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -504,78 +255,18 @@
             <div class="container-fluid my-5">
                 <h3 class="text-center mb-4">Top Products</h3>
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
-                    <div class="item">
-                        <img
-                            src="assets/img/slider.jpg"
-                            alt="Error In Download the image"
-                        />
-                        <h5>AIR JORDAN RETRO</h5>
-                        <h6>AED1,099,00</h6>
-                    </div>
+                    @foreach($products as $pro)
+                        @if($sectionsData->cat_ids[5] == $pro->parent_id)
+                            <div class="item">
+                                <img
+                                    src="{{ config('app.url').'/storage/'.$pro->image }}"
+                                    alt="Error In Download the image"
+                                />
+                                <h5>{{ $pro->translate(app()->getLocale())->name }}</h5>
+                                <h6>AED {{ $pro->price }}</h6>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -592,76 +283,38 @@
                         <p class="text-muted">Select blog to read details</p>
                     </div>
                     <div class="row">
-                        <div
-                            class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-md-center"
-                        >
-                            <div class="card mb-3" style="max-width: 540px">
-                                <div class="row g-0">
-                                    <div class="col-lg-4 col-md-12">
-                                        <img
-                                            src="assets/img/blogs-1.png"
-                                            class="img-fluid rounded mt-2 p-2"
-                                            alt="Error In Download the Image"
-                                        />
-                                    </div>
-                                    <div class="col-lg-8 col-md-12">
-                                        <div class="card-body">
-                                            <small class="text-muted">1/2/2022</small>
-                                            <h5 class="card-title">Social Media</h5>
-                                            <p class="card-text text-muted">
-                                                This is a wider card with supporting text below as a
-                                                This is a wider card with text as a natural lead-in to
-                                                additional content. This content is a little bit
-                                                longer. additional content. This content is a little
-                                                bit longer.
-                                            </p>
-                                            <a
-                                                href="#"
-                                                class="card-text text-end text-decoration-none d-flex justify-content-end"
-                                            >
-                                                DETAILS <i class="bi bi-arrow-right ms-2"></i>
-                                            </a>
+                        @foreach($posts as $post)
+                            <div
+                                class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-md-center"
+                            >
+                                <div class="card mb-3" style="max-width: 540px">
+                                    <div class="row g-0">
+                                        <div class="col-lg-4 col-md-12">
+                                            <img
+                                                src="{{ config('app.url').'/storage/'.$post->image }}"
+                                                class="img-fluid rounded mt-2 p-2"
+                                                alt="Error In Download the Image"
+                                            />
+                                        </div>
+                                        <div class="col-lg-8 col-md-12">
+                                            <div class="card-body">
+                                                <small class="text-muted">{{ $post->created_at->format('d/m/Y') }}</small>
+                                                <h5 class="card-title">{{ $post->translate(app()->getLocale())->title }}</h5>
+                                                <p class="card-text text-muted">
+                                                    {!! $post->translate(app()->getLocale())->body !!}
+                                                </p>
+                                                <a
+                                                    href="{{ route('showPost', $post) }}"
+                                                    class="card-text text-end text-decoration-none d-flex justify-content-end"
+                                                >
+                                                    DETAILS <i class="bi bi-arrow-right ms-2"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-md-center"
-                        >
-                            <div class="card mb-3" style="max-width: 540px">
-                                <div class="row g-0">
-                                    <div class="col-lg-4 col-md-12">
-                                        <img
-                                            src="assets/img/blogs-2.png"
-                                            class="img-fluid rounded mt-2 p-2"
-                                            alt="Error In Download the Image"
-                                        />
-                                    </div>
-                                    <div class="col-lg-8 col-md-12">
-                                        <div class="card-body">
-                                            <small class="text-muted">1/2/2022</small>
-                                            <h5 class="card-title">
-                                                Important Article about design
-                                            </h5>
-                                            <p class="card-text text-muted">
-                                                This is a wider card with supporting text below as a
-                                                This is a wider card with text as a natural lead-in to
-                                                additional content. This content is a little bit
-                                                longer. additional content. This content is a little
-                                                bit longer.
-                                            </p>
-                                            <a
-                                                href="#"
-                                                class="card-text text-end text-decoration-none d-flex justify-content-end"
-                                            >
-                                                DETAILS <i class="bi bi-arrow-right ms-2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -677,21 +330,21 @@
                     <div
                         class="col-lg-4 col-md-6 col-sm-12 mt-4 text-center text-lg-start"
                     >
-                        <h6>Always Availabel To Help</h6>
-                        <p>We're always ready to provide the help you need at any time</p>
+                        <h6>{{ $settings['quotationtitle'] }}</h6>
+                        <p>{{ $settings['quotationtext'] }}</p>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-sm-12 text-center border pt-4">
                         <h6>Telephone</h6>
-                        <p>+9710 50 528 4577</p>
+                        <p>{{ $settings['telephone'] }}</p>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 text-center border pt-4">
                         <h6>Whatsapp</h6>
-                        <p>+9710 50 528 4577</p>
+                        <p>{{ $settings['whatsapp'] }}</p>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-12 text-center mt-4">
                         <h6>Email</h6>
-                        <p>info@gmail.com</p>
+                        <p>{{ $settings['email'] }}</p>
                     </div>
                 </div>
             </div>
@@ -707,24 +360,34 @@
                     <div class="col-lg-6 col-md-12 mb-5">
                         <h5>SOCAIL MEDIA ACCOUNTS</h5>
                         <div class="icons-social fs-3 mb-5">
-                            <i class="bi bi-facebook me-2"></i>
-                            <i class="bi bi-google me-2"></i>
-                            <i class="bi bi-twitter me-2"></i>
-                            <i class="bi bi-linkedin me-2"></i>
-                            <i class="bi bi-instagram"></i>
+                            <a href="{{ $settings['facebook'] }}" class="icons-social text-decoration-none">
+                                <i class="bi bi-facebook me-2"></i>
+                            </a>
+                            <a href="{{ $settings['google'] }}" class="icons-social text-decoration-none">
+                                <i class="bi bi-google me-2"></i>
+                            </a>
+                            <a href="{{ $settings['twitter'] }}" class="icons-social text-decoration-none">
+                                <i class="bi bi-twitter me-2"></i>
+                            </a>
+                            <a href="{{ $settings['linkedin'] }}" class="icons-social text-decoration-none">
+                                <i class="bi bi-linkedin me-2"></i>
+                            </a>
+                            <a href="{{ $settings['instagram'] }}" class="icons-social text-decoration-none">
+                                <i class="bi bi-instagram"></i>
+                            </a>
                         </div>
                         <h5>APPLICATION LINK(SOON)</h5>
-                        <a href="#googlePlay">
+                        <a>
                             <img
-                                src="assets/img/appStore.png"
+                                src="{{ config('app.url').'/images/appStore.png' }}"
                                 alt="Error In Download The Image"
                                 class="img-fluid"
                                 width="120"
                             />
                         </a>
-                        <a href="#appStore">
+                        <a>
                             <img
-                                src="assets/img/googlePlay.png"
+                                src="{{ config('app.url').'/images/googlePlay.png' }}"
                                 alt="Error In Download The Image"
                                 class="img-fluid"
                                 width="120"
