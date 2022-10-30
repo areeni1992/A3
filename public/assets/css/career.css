@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+/* Header */
+/* Frist Navbar */
+section header .navbar {
+    background-color: #FF8A00;
+}
+
+/* search bar */
+.saerch-bar .container .row form .input-group input {
+    background-color: #F1F1F1;
+}
+
+.saerch-bar .container .row form .input-group .search-btn {
+    background-color: #FF8A00 !important;
+    font-size: 14px;
+    width: 100px;
+}
+
+/* Second Navbar */
+section header .S-navbar {
+    background-color: #F1F1F1;
+}
+
+section header .S-navbar .container .navbar-brand .home-icon {
+    color: #FF8A00 !important;
+
+}
+
+section header .S-navbar .container .navbar-nav li .home-icon {
+    color: #FF8A00 !important;
+}
+
+section header .S-navbar .container .navbar-nav li a {
+    color: #000;
+
+}
+
+section header .S-navbar .container .navbar-nav li a:hover {
+    color: #FF8A00;
+}
+
+/* Header Title */
+
+section header .title-header {
+    background-image: url('../img/contact-header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+section header .title-header .container {
+    height: 60vh;
+}
+
+section header .title-header .container nav ol li {
+    color: #FF8A00;
+}
+
+section header .title-header .container nav ol li a {
+    font-size: 17px;
+    width: 30%;
+    color: #000;
+    text-decoration: none;
+}
+
+section header .title-header .container .title-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 16%;
+    font-size: 14px;
+
+}
+
+/* Contact Info */
+section .contact-info {
+    width: 77%;
+    margin: auto;
+}
+
+section .contact-info .container h6 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+section .contact-info .container .row .info {
+    background-color: #EAEAEA;
+    height: 30vh;
+}
+
+section .contact-info .container .row .email {
+    background-color: #FF8A00;
+    color: #FFF;
+    height: 30vh;
+
+}
+
+/* Form Input */
+
+section .message .container .row {
+    padding: 30px;
+}
+
+section .message .container .h5-color {
+    color: #FF8A00;
+}
+
+section .message .container h5:first-child {
+    font-weight: 400;
+}
+
+textarea {
+    resize: none;
+}
+
+section .message form textarea::placeholder,
+section .message form input::placeholder {
+    color: #CCC;
+    font-weight: 500;
+}
+
+
+/* Custom Input File */
+
+section .message form input[type="file"] {
+    color: transparent;
+    border: 2px dashed #ccc !important;
+}
+
+
+section .message form input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+section .message form input[type="file"]::before {
+    content: 'Upload Your CV ';
+    color: #CCC;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 8px;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+section .message form input[type="file"] {
+    content: 'Attachments ';
+    color: transparent;
+}
+
+
+section .message form input[type="submit"] {
+    background-color: #FF8A00;
+    color: #FFF;
+    padding: 8px;
+    width: 33%;
+    font-size: 17px;
+}
+
+section .message form .form-check {
+    font-size: medium;
+    padding-top: 6px;
+}
+
+
+section .message form input[type="checkbox"]:checked {
+    background-color: #fd9d0d;
+    border-color: #fd920d;
+}
+
+section .message form input[type="checkbox"] {
+    border-color: #fd9d0d;
+    color: #fd9d0d;
+    border-radius: 0px;
+}
+
+section .message form .form-check .label {
+    font-size: 13px;
+}
+
+
+/* Procurement program  */
+section .program .container .row h5 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+
+/* Footer */
+section footer {
+    background-color: #f1f1f1
+}
+
+section footer .container .row ul li {
+    padding: 5px 0;
+}
+
+section footer .copyright {
+    font-size: 13px;
+}
+
+section footer .copyright a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Media Query */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    /* Contact Info */
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 20vh;
+    }
+
+    section .contact-info .container .row a {
+        width: 50%;
+    }
+
+    /* Send Message */
+    section .message form input[type="submit"] {
+        width: 64%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    /* Header Title */
+    section header .title-header {
+        height: 33vh;
+    }
+
+    /* Contact Info */
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 20vh;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    /* Contact Info */
+    section header .title-header {
+        height: 60vh;
+    }
+
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 30vh;
+    }
+}

@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+/* Header */
+/* Frist Navbar */
+section header .navbar {
+    background-color: #FF8A00;
+}
+
+/* search bar */
+.saerch-bar .container .row form .input-group input {
+    background-color: #F1F1F1;
+}
+
+.saerch-bar .container .row form .input-group .search-btn {
+    background-color: #FF8A00 !important;
+    font-size: 14px;
+    width: 100px;
+}
+
+/* Second Navbar */
+
+section header .S-navbar .container .navbar-brand .home-icon {
+    color: #FF8A00 !important;
+
+}
+
+section header .S-navbar .container .navbar-nav li .home-icon {
+    color: #FF8A00 !important;
+}
+
+section header .S-navbar .container .navbar-nav li a {
+    color: #FFF;
+}
+
+section header .S-navbar .container .navbar-nav li a:hover {
+    color: #FF8A00;
+}
+
+/* Header Title */
+
+section header .title-header {
+    background-image: url('../img/title.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+section header .title-header .container {
+    height: 90vh;
+}
+
+section header .title-header .container p {
+    font-size: 17px;
+    width: 30%;
+    color: #DDD;
+}
+
+section header .title-header .container .title-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 16%;
+    font-size: 14px;
+
+}
+
+/* Sport Clothes */
+
+section .clothes {
+    background-image: url('../img/sport-clothes.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+section .clothes .clothes-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 17%;
+}
+
+/* The Market */
+section .market {
+    position: relative;
+    background-color: #C8CCBE;
+    height: 45vh;
+}
+
+section .market .market-btn {
+    width: 18%;
+    font-size: 14px;
+}
+
+section .market .market-img1 {
+    position: absolute;
+    top: 190px;
+    left: 135px;
+    z-index: 1;
+}
+
+section .market .market-img2 {
+    position: absolute;
+    top: 45px;
+    left: 768px;
+}
+
+/* Custom apparel */
+section .apparel .container-fluid .row h3 {
+    line-height: 40px;
+}
+
+section .apparel .container-fluid .row .apperal-btn {
+    background-color: #FF8A00;
+    width: 50%;
+    color: #FFF;
+    font-size: 14px;
+}
+
+/* Loyalty Program */
+section .loyal {
+    background-image: url('../img/loyal.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 650px 250px;
+    height: 50vh;
+}
+
+section .loyal h2 span {
+    color: #FF8A00;
+}
+
+section .loyal p {
+    font-size: 20px;
+}
+
+section .loyal .loyal-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 17%;
+    font-size: 14px;
+}
+
+/* NewsLetter */
+section .newsLetter .newsLetter-img {
+    background-image: url('../img/newsLetter-1.jpg');
+    height: 60vh !important;
+}
+
+section .newsLetter .newsLetter-img form input[type="email"] {
+    background-color: #B1B1B1;
+}
+
+section .newsLetter .newsLetter-img form input::placeholder {
+    color: #000;
+}
+
+section .newsLetter .newsLetter-img h3 {
+    font-weight: 400;
+}
+
+section .newsLetter .newsLetter-img .newsLetter-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 45%;
+    font-size: 14px;
+}
+
+section .newsLetter .gymFloor {
+    background-image: url('../img/newsLetter-2.jpg');
+    height: 60vh !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: cover;
+}
+
+section .newsLetter .gymFloor .gymFloor-btn {
+    width: 30%;
+}
+
+/* Blogs */
+
+
+section .blogs .container h3 {
+    color: #FF8A00;
+}
+
+section .blogs .card {
+    background-color: #F8F8F8;
+}
+
+section .blogs .container .row .card .row small {
+    font-size: 13px;
+
+}
+
+section .blogs .container .row .card .row img {
+    height: 90%;
+
+}
+
+section .blogs .container .row .card .row .card-body p {
+    font-size: 14px;
+}
+
+section .blogs .container .row .card .row .card-body a {
+    color: #FF8A00;
+    font-size: 13px;
+}
+
+/* Info */
+section .info .container .row h6 {
+    font-size: 18px;
+}
+
+section .info .container .row p {
+    font-size: 15px;
+    color: #666;
+
+}
+
+/* Social Media */
+
+section .social-media .container-fluid .icons-social {
+    color: #FF8A00;
+}
+
+section .social-media .container-fluid .program h5 {
+    font-size: 18px;
+}
+
+/* Footer */
+section footer {
+    background-color: #f1f1f1
+}
+
+section footer .container .row ul li {
+    padding: 5px 0;
+}
+
+section footer .copyright {
+    font-size: 13px;
+}
+
+section footer .copyright a {
+    color: #000;
+    text-decoration: none;
+
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* The Slider Owl Carousel */
+.owl-carousel {
+    position: relative;
+}
+
+.owl-carousel .item h5 {
+    font-size: 16px;
+    font-weight: 700;
+    padding-top: 4%;
+}
+
+.owl-carousel .item h6 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.owl-nav .owl-next {
+    position: absolute;
+    right: -17px;
+    top: 40%;
+    background-color: #FFF !important;
+    color: #666 !important;
+    border: 1px solid #929292 !important;
+    border-radius: 0 !important;
+    font-size: 33px !important;
+    font-weight: 100 !important;
+
+}
+
+.owl-nav .owl-next span {
+    padding: 25px !important;
+}
+
+.owl-nav .owl-prev {
+    position: absolute;
+    left: -17px;
+    top: 40%;
+    background-color: #FFF !important;
+    color: #666 !important;
+    border: 1px solid #929292 !important;
+    border-radius: 0 !important;
+    font-size: 33px !important;
+    font-weight: 100 !important;
+}
+
+.owl-nav .owl-prev span {
+    padding: 25px !important;
+}
+
+.owl-dots {
+    display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    /* Header */
+    /* header Brand */
+    section header .brand {
+        font-size: 13px;
+    }
+
+    /* Header Title */
+    section header .title-header {
+        height: 100%;
+    }
+
+    section header .title-header .container p {
+        width: 100%;
+    }
+
+    section header .title-header .container .title-btn {
+        width: 45%;
+        font-size: 12px;
+    }
+
+    /* Sport Clothes */
+    section .clothes .clothes-img {
+        width: 80px;
+    }
+
+    section .clothes .clothes-btn {
+        width: 45%;
+        font-size: 13px;
+    }
+
+    /* The Market */
+    section .market {
+        background-color: transparent;
+        background-image: url('../../assets/img/market-1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 30vh;
+        width: 100%;
+    }
+
+    section .market .market-btn {
+        width: 40%;
+    }
+
+    /* Box Slider Two */
+    section .box-two {
+        margin-top: 18%;
+    }
+
+    /* Loyalty Program */
+    section .loyal {
+        background-size: 650px 250px;
+    }
+
+    section .loyal .loyal-btn {
+        width: 45%;
+    }
+
+    /* NewsLetter */
+
+    section .newsLetter .gymFloor .gymFloor-btn {
+        width: 60%;
+        margin-top: 3%;
+        font-size: 14px;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    /* The Market */
+    section .market {
+        background-color: transparent;
+        background-image: url('../../assets/img/market-1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 30vh;
+        width: 100%;
+
+    }
+
+    /* Box Slider Two */
+    section .box-two {
+        margin-top: 10%;
+    }
+
+    /* Loyalty Program */
+    section .loyal {
+        background-size: auto;
+    }
+
+    /* News Letter */
+    section .newsLetter .gymFloor .gymFloor-btn {
+        width: 65%;
+        font-size: 14px;
+        margin-top: 3%;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    /* The Market */
+    section .market {
+        background-color: #C8CCBE;
+        height: 45vh;
+        background-image: none;
+    }
+
+    /* Box Slider Two */
+    section .box-two {
+        margin-top: 30%;
+    }
+
+    /* Loyalty Program */
+    section .loyal {
+        background-size: auto;
+    }
+
+    /* News Letter */
+    section .newsLetter .gymFloor .gymFloor-btn {
+        width: 30%;
+        font-size: 14px;
+    }
+}

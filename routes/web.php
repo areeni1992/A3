@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\Layouts\HomePage\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +19,14 @@ use App\Http\Controllers\HomePageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('posts/show/{slug}', [HomeController::class, 'showPage'])->name('showPage');
 //Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Categories
 Route::group(
     [
         'prefix' => 'admin',
@@ -41,6 +42,7 @@ Route::group(
 
 });
 
+//Posts
 Route::group(
     [
     'prefix' => 'admin',
@@ -55,7 +57,7 @@ Route::group(
     Route::get('posts/delete/{id}', [PostController::class, 'destroy'])->name('deletePost');
 });
 
-
+//Settgins
 Route::group(
     [
         'prefix' => 'admin',
