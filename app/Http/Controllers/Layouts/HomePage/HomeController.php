@@ -90,6 +90,7 @@ class HomeController extends Controller
                     $newMessage->phone_number = $request->phone_number;
                     $newMessage->order_number = $request->order_number;
                     $newMessage->message = $request->message;
+                    $newMessage->status = 'sender';
 
                     $newMessage->save();
 
@@ -99,6 +100,7 @@ class HomeController extends Controller
                     $newMessage->phone_number = $request->phone_number;
                     $newMessage->order_number = $request->order_number;
                     $newMessage->message = $request->message;
+                    $newMessage->status = 'sender';
 
                     $newMessage->save();
                     return redirect()->back()->with('success', 'The Message Has Been sending Successfully');

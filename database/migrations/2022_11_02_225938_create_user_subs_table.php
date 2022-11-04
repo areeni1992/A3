@@ -20,7 +20,7 @@ class CreateUserSubsTable extends Migration
             $table->string('phone_number')->nullable();
             $table->longText('message')->nullable();
             $table->text('attachment')->nullable();
-            $table->enum('status', ['subscriber', 'sender'])->default('subscriber');
+            $table->enum('status', ['subscriber', 'sender'])->default('sender');
             $table->timestamps();
         });
     }

@@ -21,13 +21,13 @@
                             <a href="#" class="text-dark text-decoration-none text-muted">About US</a>
                         </li>
                         <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Careers</a>
+                            <a href="{{ route('careerPage') }}" class="text-dark text-decoration-none text-muted">Careers</a>
                         </li>
                         <li>
                             <a href="#" class="text-dark text-decoration-none text-nowrap text-muted">Become Our Distributer</a>
                         </li>
                         <li>
-                            <a href="Pages/contact.html" class="text-dark text-decoration-none text-muted">Contact Us</a>
+                            <a href="{{ route('contactPage') }}" class="text-dark text-decoration-none text-muted">Contact Us</a>
                         </li>
                     </ul>
                 </div>

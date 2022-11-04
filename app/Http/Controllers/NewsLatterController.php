@@ -29,4 +29,11 @@ class NewsLatterController extends Controller
 
         return view('backend.user.subscriber', compact('subscribers'));
     }
+
+    public function messages()
+    {
+        $msgs = UserSub::where('status', 'sender')->get();
+        return view('backend.user.messages', compact('msgs'));
+
+    }
 }

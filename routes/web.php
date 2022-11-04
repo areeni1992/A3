@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Layouts\HomePage\HomeController;
 use App\Http\Controllers\NewsLatterController;
+use App\Http\Controllers\CareerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,12 +29,15 @@ Route::get('posts/show/{post}', [HomeController::class, 'showPost'])->name('show
 Route::get('posts/categories/{id?}', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
 Route::post('/newsletter/post', [NewsLatterController::class, 'store'])->name('newsletter');
 
+
+Route::get('/careers', [CareerController::class, 'index'])->name('careerPage');
 Route::group(
     [
         'prefix' => 'admin',
         'middleware' => 'auth'
     ], function () {
     Route::get('/subscribers', [NewsLatterController::class, 'subscribers'])->name('subscribers');
+    Route::get('/messages', [NewsLatterController::class, 'messages'])->name('messages');
 });
 //Auth::routes();
 
