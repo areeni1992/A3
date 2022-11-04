@@ -82,12 +82,7 @@
                     <a href="{{ route('settings') }}" class="nav-link cursor-pointer">{{ __('words.settings') }}</a>
                     <a href="{{ route('pages') }}" class="nav-link cursor-pointer">{{ __('words.pages') }}</a>
                     <a href="{{ route('products') }}" class="nav-link cursor-pointer">{{ __('words.products') }}</a>
-                    <div class="nav flex-column nav-pills ms-3 bg-secondary text-lighter" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link text-light active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                        <a class="nav-link text-light" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                        <a class="nav-link text-light" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                        <a class="nav-link text-light" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-                    </div>
+                    <a href="{{ route('subscribers') }}" class="nav-link cursor-pointer">Subscribers</a>
 {{--                    <a class="nav-link cursor-pointer" @class('active') id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>--}}
                 </div>
 
@@ -236,15 +231,6 @@
                                                         </g>
                                                     </g>
                                                 </svg>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    Payment successfully completed
-                                                </h6>
-                                                <p class="text-xs text-secondary mb-0 ">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    2 days
-                                                </p>
                                             </div>
                                         </div>
                                     </a>

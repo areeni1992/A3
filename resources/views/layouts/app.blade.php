@@ -3,4 +3,6 @@
             @yield('content')
         </main>
     </div>
+
+
 @include('include.footer')

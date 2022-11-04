@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Layouts\HomePage\HomeController;
+use App\Http\Controllers\NewsLatterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +22,19 @@ use App\Http\Controllers\Layouts\HomePage\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('pages/show/{slug}', [HomeController::class, 'showPage'])->name('showPage');
+Route::any('/contact-us', [HomeController::class, 'contactPage'])->name('contactPage');
+Route::get('page/show/{page}', [HomeController::class, 'showPage'])->name('showPage');
 Route::get('posts/show/{post}', [HomeController::class, 'showPost'])->name('showPost');
 Route::get('posts/categories/{id?}', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
+Route::post('/newsletter/post', [NewsLatterController::class, 'store'])->name('newsletter');
+
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth'
+    ], function () {
+    Route::get('/subscribers', [NewsLatterController::class, 'subscribers'])->name('subscribers');
+});
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

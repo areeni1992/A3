@@ -13,8 +13,8 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{{ asset('lib/Bootstrap/css/bootstrap.min.css') }}" />
         <!-- Owl carousel -->
-        <link rel="stylesheet" href="{{ asset('lib/Owl Carousel/css/owl.carousel.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('lib/Owl Carousel/css/owl.theme.default.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('lib/owl-carousel/css/owl.carousel.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('lib/owl-carousel/css/owl.theme.default.min.css') }}" />
 
         <!-- icons -->
         <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css') }}" />
@@ -22,9 +22,10 @@
         <!-- Style css -->
         <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/about.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/css/agent.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/agents.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/career.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/Request-quotation.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     </head>
 <body>
@@ -69,9 +70,7 @@
                             </li>
                         @endforeach
                         <li class="nav-item">
-                            <a class="nav-link pb-1 pb-lg-0 text-black" href="#"
-                            >CONTACT</a
-                            >
+                            <a class="nav-link pb-1 pb-lg-0 text-black" href="{{ route('contactPage') }}">CONTACT</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">

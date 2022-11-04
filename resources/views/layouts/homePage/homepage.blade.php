@@ -51,7 +51,7 @@
                     <h3 class="mt-4">
                         {{ $sectionsData->translate(app()->getLocale())->first_banner_text }}
                     </h3>
-                    <a class="btn mt-3 clothes-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids)) ? $sectionsData['first'] : '' }}">SHOP NOW</a>
+                    <a class="btn mt-3 clothes-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids) ? $sectionsData->page_ids['first'] : '' )}}">SHOP NOW</a>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
         <div class="market my-5">
             <div class="container h-75 d-flex flex-column justify-content-center">
                 <h4 class="text-black">{{ $sectionsData->translate(app()->getLocale())->second_banner_text }}</h4>
-                <a class="btn market-btn bg-black text-white mt-2" href="{{ route('showPage', is_array($sectionsData->page_ids)) ? $sectionsData['second'] : ''}}">
+                <a class="btn market-btn bg-black text-white mt-2" href="{{ route('showPage', is_array($sectionsData->page_ids) ? $sectionsData->page_ids['second'] : '')}}">
                     SHOP NOW
                 </a>
 
@@ -132,7 +132,7 @@
                                 {{ $sectionsData->translate(app()->getLocale())->third_banner_text }}
 
                             </p>
-                            <a class="btn apperal-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids)) ? $sectionsData['third'] : '' }}">SHOP NOW</a>
+                            <a class="btn apperal-btn" href="{{ route('showPage',  $sectionsData->page_ids['third']) }}">SHOP NOW</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 p-0 d-none d-lg-block d-md-block">
@@ -218,11 +218,13 @@
                             style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->catalog_image }}"
                         >
                             <h3 class="text-nowrap">SUBSCRIBE TO NEWSLETTER</h3>
-                            <form>
+                            <form action="{{ route('newsletter') }}" method="post">
+                                @csrf
                                 <input
-                                    type="email"
+                                    type="user_email"
                                     placeholder="Email"
                                     class="form-control my-3 border-0"
+                                    name="user_email"
                                 />
                                 <input
                                     type="submit"
@@ -357,7 +359,7 @@
         <div class="social-media my-5">
             <div class="container-fluid">
                 <div class="row text-center">
-                    <div class="col-lg-6 col-md-12 mb-5">
+                    <div class="col-md-12 mb-5 mx-auto">
                         <h5>SOCAIL MEDIA ACCOUNTS</h5>
                         <div class="icons-social fs-3 mb-5">
                             <a href="{{ $settings['facebook'] }}" class="icons-social text-decoration-none">
@@ -394,31 +396,7 @@
                             />
                         </a>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="program">
-                            <h5>MEMBERSHIP IN GOVERNMENT INSTITUTIONS</h5>
-                            <h5 class="my-3">PROCUREMEN</h5>
-                            <h5 class="mb-4">PROGRAM</h5>
-                            <img
-                                src="assets/img/khalefa.png"
-                                alt="Error In Download The Image"
-                                class="img-fluid"
-                                width="100"
-                            />
-                            <img
-                                src="assets/img/sahem.png"
-                                alt="Error In Download The Image"
-                                class="img-fluid mx-5"
-                                width="80"
-                            />
-                            <img
-                                src="assets/img/national.png"
-                                alt="Error In Download The Image"
-                                class="img-fluid"
-                                width="100"
-                            />
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

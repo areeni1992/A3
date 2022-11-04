@@ -3,15 +3,15 @@
     <section>
     <header>
         <!-- Start header Title -->
-        <div class="title-header" style="background-image: url({{ config('app.url').'/storage/'.$slug->image }})">
+        <div class="title-header" style="background-image: url({{ config('app.url').'/storage/'.$page->image }})">
             <div class="container h-100 d-flex flex-column justify-content-center">
-                <h3>{{ $slug->translate(app()->getLocale())->title }}</h3>
+                <h3>{{ $page->translate(app()->getLocale())->title }}</h3>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="../index.html">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">{{ $slug->translate(app()->getLocale())->title }}</li>
+                        <li class="breadcrumb-item active">{{ $page->translate(app()->getLocale())->title }}</li>
                     </ol>
                 </nav>
             </div>
@@ -24,9 +24,9 @@
 <section>
     <div class="container">
         <div class="row py-3">
-            <h3>{{ $slug->translate(app()->getLocale())->title }}</h3>
+            <h3>{{ $page->translate(app()->getLocale())->title }}</h3>
             <p>
-                {!! $slug->translate(app()->getLocale())->content !!}
+                {!! $page->translate(app()->getLocale())->content !!}
             </p>
         </div>
     </div>

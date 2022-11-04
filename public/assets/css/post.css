@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+/* Header */
+/* Frist Navbar */
+section header .navbar {
+    background-color: #FF8A00;
+}
+
+/* search bar */
+.saerch-bar .container .row form .input-group input {
+    background-color: #F1F1F1;
+}
+
+.saerch-bar .container .row form .input-group .search-btn {
+    background-color: #FF8A00 !important;
+    font-size: 14px;
+    width: 100px;
+}
+
+/* Second Navbar */
+section header .S-navbar {
+    background-color: #F1F1F1;
+}
+
+section header .S-navbar .container .navbar-brand .home-icon {
+    color: #FF8A00 !important;
+
+}
+
+section header .S-navbar .container .navbar-nav li .home-icon {
+    color: #FF8A00 !important;
+}
+
+section header .S-navbar .container .navbar-nav li a {
+    color: #000;
+
+}
+
+section header .S-navbar .container .navbar-nav li a:hover {
+    color: #FF8A00;
+}
+
+/* Procurement program  */
+section .program .container .row h5 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+/* Contact Info */
+section .contact-info {
+    width: 77%;
+    margin: auto;
+}
+
+section .contact-info .container h6 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+section .contact-info .container .row .info {
+    background-color: #EAEAEA;
+    height: 30vh;
+}
+
+section .contact-info .container .row .email {
+    background-color: #FF8A00;
+    color: #FFF;
+    height: 30vh;
+
+}
+
+
+/* Footer */
+section footer {
+    background-color: #f1f1f1
+}
+
+section footer .container .row ul li {
+    padding: 5px 0;
+}
+
+section footer .copyright {
+    font-size: 13px;
+}
+
+section footer .copyright a {
+    color: #000;
+    text-decoration: none;
+
+}
+
+/* Media Query */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    /* Post */
+    .box-1 {
+        flex-wrap: wrap;
+        transform-style: preserve-3d;
+        perspective: 500px;
+        margin: auto;
+    }
+
+    .box-1 .box {
+        position: relative;
+        width: 100%;
+        height: 390px;
+        background: #000;
+        transition: 0.3s;
+        transform-style: preserve-3d;
+        overflow: hidden;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+
+    .box-1 .box .imgBx:hover {
+        transform: rotateY(5deg) scale(1.04);
+        z-index: 1;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .box-1 .box .imgBx {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box-1 .box .imgBx:before {
+        content: '';
+        position: absolute;
+        top: 70%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), #FFF);
+        z-index: 1;
+        opacity: 1;
+        transition: 0.3s;
+        mix-blend-mode: multiply;
+    }
+
+    .container-fluid .box:hover .imgBx:before {
+        opacity: 1;
+    }
+
+    .container-fluid .box .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .container-fluid .box .content {
+        position: absolute;
+        top: 7px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        padding: 20px;
+        align-items: flex-end;
+        box-sizing: border-box;
+    }
+
+    .container-fluid .box .content h2 {
+        color: #fff;
+        transition: 0.4s;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-size: 20px;
+        transform: translateY(0px);
+        transition-delay: 0.3s;
+    }
+
+
+    .container-fluid .box .content p {
+        color: #fff;
+        transition: 0.4s;
+        font-size: 14px;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+    }
+
+
+}
+
+/* Contact Info */
+section .contact-info .container .row .email,
+section .contact-info .container .row .info {
+    height: 20vh;
+}
+
+section .contact-info .container .row a {
+    width: 50%;
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    /* Header Title */
+    section header .title-header {
+        height: 33vh;
+        background-position: 5px -4px;
+    }
+
+    /* Post */
+    .box-1 {
+        flex-wrap: wrap;
+        transform-style: preserve-3d;
+        perspective: 500px;
+        margin: auto;
+    }
+
+    .box-1 .box {
+        position: relative;
+        width: 100%;
+        height: 390px;
+        background: #000;
+        transition: 0.3s;
+        transform-style: preserve-3d;
+        overflow: hidden;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+
+    .box-1 .box .imgBx:hover {
+        transform: rotateY(5deg) scale(1.04);
+        z-index: 1;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .box-1 .box .imgBx {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box-1 .box .imgBx:before {
+        content: '';
+        position: absolute;
+        top: 60%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), #FFF);
+        z-index: 1;
+        opacity: 1;
+        transition: 0.3s;
+        mix-blend-mode: multiply;
+    }
+
+    .container-fluid .box:hover .imgBx:before {
+        opacity: 1;
+    }
+
+    .container-fluid .box .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .container-fluid .box .content {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        padding: 20px;
+        align-items: flex-end;
+        box-sizing: border-box;
+    }
+
+    .container-fluid .box .content h2 {
+        color: #fff;
+        transition: 0.4s;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-size: 20px;
+        transform: translateY(0px);
+        transition-delay: 0.3s;
+    }
+
+
+    .container-fluid .box .content p {
+        color: #fff;
+        transition: 0.4s;
+        font-size: 14px;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+    }
+
+
+    /* Contact Info */
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 20vh;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    /* Header Title */
+    section header .title-header {
+        height: 60vh;
+        background-position: 5px -100px;
+    }
+
+    /* Post */
+    .box-1 {
+        flex-wrap: wrap;
+        transform-style: preserve-3d;
+        perspective: 500px;
+        margin: auto;
+    }
+
+    .box-1 .box {
+        position: relative;
+        width: 100%;
+        height: 390px;
+        background: #000;
+        transition: 0.3s;
+        transform-style: preserve-3d;
+        overflow: hidden;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+
+    .box-1 .box .imgBx:hover {
+        transform: rotateY(5deg) scale(1.04);
+        z-index: 1;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .box-1 .box .imgBx {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box-1 .box .imgBx:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #FF8A00, rgba(0, 0, 0, 0.5));
+        z-index: 1;
+        opacity: 0;
+        transition: 0.3s;
+        mix-blend-mode: multiply;
+    }
+
+    .container-fluid .box:hover .imgBx:before {
+        opacity: 1;
+    }
+
+    .container-fluid .box .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .container-fluid .box .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        padding: 20px;
+        align-items: flex-end;
+        box-sizing: border-box;
+    }
+
+    .container-fluid .box .content h2 {
+        color: #fff;
+        transition: 0.4s;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-size: 20px;
+        transform: translateY(200px);
+        transition-delay: 0.3s;
+    }
+
+    .container-fluid .box:hover .content h2 {
+        transform: translateY(0px);
+    }
+
+    .container-fluid .box .content p {
+        color: #fff;
+        transition: 0.4s;
+        font-size: 14px;
+        transform: translateY(200px);
+        transition-delay: 0.4s;
+    }
+
+    .container-fluid .box:hover .content p {
+        transform: translateY(0px);
+    }
+
+
+    /* Contact Info */
+    section header .title-header {
+        height: 60vh;
+    }
+
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 30vh;
+    }
+}
