@@ -28,9 +28,9 @@ Route::get('page/show/{page}', [HomeController::class, 'showPage'])->name('showP
 Route::get('posts/show/{post}', [HomeController::class, 'showPost'])->name('showPost');
 Route::get('posts/categories/{id?}', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
 Route::post('/newsletter/post', [NewsLatterController::class, 'store'])->name('newsletter');
-
-
 Route::get('/careers', [CareerController::class, 'index'])->name('careerPage');
+Route::post('/careers/send', [CareerController::class, 'requestCareer'])->name('requestCareer');
+
 Route::group(
     [
         'prefix' => 'admin',
@@ -38,6 +38,8 @@ Route::group(
     ], function () {
     Route::get('/subscribers', [NewsLatterController::class, 'subscribers'])->name('subscribers');
     Route::get('/messages', [NewsLatterController::class, 'messages'])->name('messages');
+    Route::get('/career', [CareerController::class, 'insert'])->name('insert');
+    Route::any('/insert-career-page-date/{id?}', [CareerController::class, 'insertPageDate'])->name('insertPageDate');
 });
 //Auth::routes();
 

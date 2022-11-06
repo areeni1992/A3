@@ -84,6 +84,7 @@
                     <a href="{{ route('products') }}" class="nav-link cursor-pointer">{{ __('words.products') }}</a>
                     <a href="{{ route('subscribers') }}" class="nav-link cursor-pointer">Subscribers</a>
                     <a href="{{ route('messages') }}" class="nav-link cursor-pointer">Messages</a>
+                    <a href="{{ route('insert') }}" class="nav-link cursor-pointer">Career</a>
 {{--                    <a class="nav-link cursor-pointer" @class('active') id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>--}}
                 </div>
 

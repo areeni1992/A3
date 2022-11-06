@@ -34,6 +34,8 @@ class CreateCareersTable extends Migration
             $table->json('employment_questions')->nullable();
             $table->text('attachment')->nullable();
             $table->enum('ok', ['true', 'false'])->default('false')->nullable();
+
+            $table->enum('insert_by', ['admin', 'user'])->default('admin')->nullable();
             $table->timestamps();
         });
     }
