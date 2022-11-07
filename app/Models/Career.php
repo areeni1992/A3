@@ -33,4 +33,5 @@ class Career extends Model implements TranslatableContract
         'ok'
     ];
 
+    protected $casts = ['general_questions' => 'array', 'employment_questions' => 'array'];
 }

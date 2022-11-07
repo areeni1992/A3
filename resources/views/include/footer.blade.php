@@ -24,7 +24,7 @@
                             <a href="{{ route('careerPage') }}" class="text-dark text-decoration-none text-muted">Careers</a>
                         </li>
                         <li>
-                            <a href="#" class="text-dark text-decoration-none text-nowrap text-muted">Become Our Distributer</a>
+                            <a href="{{ route('userQoutPage') }}" class="text-dark text-decoration-none text-nowrap text-muted">Request Quotations</a>
                         </li>
                         <li>
                             <a href="{{ route('contactPage') }}" class="text-dark text-decoration-none text-muted">Contact Us</a>

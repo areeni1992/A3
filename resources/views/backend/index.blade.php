@@ -85,6 +85,8 @@
                     <a href="{{ route('subscribers') }}" class="nav-link cursor-pointer">Subscribers</a>
                     <a href="{{ route('messages') }}" class="nav-link cursor-pointer">Messages</a>
                     <a href="{{ route('insert') }}" class="nav-link cursor-pointer">Career</a>
+                    <a href="{{ route('dashIndex') }}" class="nav-link cursor-pointer">Quotations Page Settings</a>
+{{--                    <a href="{{ route('getAllQuotations') }}" class="nav-link cursor-pointer">Quotaionts</a>--}}
 {{--                    <a class="nav-link cursor-pointer" @class('active') id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>--}}
                 </div>
 

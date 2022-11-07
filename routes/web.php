@@ -10,6 +10,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Layouts\HomePage\HomeController;
 use App\Http\Controllers\NewsLatterController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\QuotationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,8 @@ Route::get('posts/categories/{id?}', [HomeController::class, 'getSubCategories']
 Route::post('/newsletter/post', [NewsLatterController::class, 'store'])->name('newsletter');
 Route::get('/careers', [CareerController::class, 'index'])->name('careerPage');
 Route::post('/careers/send', [CareerController::class, 'requestCareer'])->name('requestCareer');
+Route::get('/user-qoutation-page', [QuotationController::class, 'userQoutPage'])->name('userQoutPage');
+Route::post('/send-request', [QuotationController::class, 'insertRequiest'])->name('insertRequiest');
 
 Route::group(
     [
@@ -40,6 +43,9 @@ Route::group(
     Route::get('/messages', [NewsLatterController::class, 'messages'])->name('messages');
     Route::get('/career', [CareerController::class, 'insert'])->name('insert');
     Route::any('/insert-career-page-date/{id?}', [CareerController::class, 'insertPageDate'])->name('insertPageDate');
+    Route::get('/quotation', [QuotationController::class, 'dashIndex'])->name('dashIndex');
+    Route::any('/quotation/{id?}', [QuotationController::class, 'insertQuotDate'])->name('insertQuotDate');
+    Route::get('/quotations', [QuotationController::class, 'getAllQuotations'])->name('getAllQuotations');
 });
 //Auth::routes();
 

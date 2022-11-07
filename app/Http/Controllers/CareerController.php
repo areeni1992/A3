@@ -88,7 +88,6 @@ class CareerController extends Controller
 
     public function requestCareer(Request $request)
     {
-
         $data = [
             'start_date' => 'required',
             'end_date' => 'required',
@@ -99,20 +98,20 @@ class CareerController extends Controller
             'position' => 'required',
             'nationality' => 'required',
             'educational_background' => 'required',
-            'general_questions.*' => 'required',
-            'employment_questions.*' => 'required',
+            'general_questions.*' => 'sometimes|required',
+            'employment_questions.*' => 'sometimes|required',
             'date_of_barth' => 'required',
             'visa_status' => 'required',
             'attachment' => 'nullable',
-            'ok' => 'required'
+            'ok' => 'nullable'
         ];
-//        $validated = $this->validate($request,$data);
+//        $valid = $request->validate($data);
+
 
             $gq = json_encode($request->general_questions);
             $dq = json_encode($request->employment_questions);
 
             $career = new Career();
-
             $career->start_date = $request->start_date;
             $career->end_date = $request->end_date;
             $career->desired_position = $request->position;
@@ -123,13 +122,26 @@ class CareerController extends Controller
             $career->educational_background = $request->educational_background;
             $career->date_of_barth = $request->date_of_barth;
             $career->visa_status = $request->visa_status;
-            $career->general_questions = $gq;
-            $career->employment_questions = $dq;
-            $career->ok = true;
-            $career->insert_by = 'user';
+            $career->general_questions = json_decode($gq, true);
+            $career->employment_questions = json_decode($dq, true);
 
-            $career->save();
-            return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
+            $career->ok = isset($request->ok) ? 'true' : 'false';
+            $career->insert_by = 'user';
+            if ($request->hasFile('attachment'))
+            {
+               $attach = $request->file('attachment');
+               $newName = time().'_'.$attach->getClientOriginalName();
+                $attach->storeAs('images', $newName, 'public');
+
+                $career->attachment = $newName;
+            }
+
+            if ($career->save())
+            {
+                return redirect()->back()->with('success', 'The career application has been sending successfully');
+            } else {
+                return redirect()->back()->with('error', 'error');
+            }
 
     }
 }

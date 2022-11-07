@@ -32,6 +32,45 @@ return [
     'price' => 'السعر',
     'desc' => 'الوصف',
 
-    'homePage' => 'الواجهة الرئيسية'
+    'homePage' => 'الواجهة الرئيسية',
+    'Name' => 'الاسم',
+    'Desired Position' => 'الموضع المطلوب',
+    'age' => 'العمر',
 
+    'From 1-10 ( Where 1 Is The Lowest And 10 Is The Highest ) , How Will You Rate Your English Proficiency ?
+Can You Read And Write In English Arabic ? What Other Languages Do You Speak ?' => 'من 1-10 (حيث 1 هو الأدنى و 10 هو الأعلى) ، كيف ستقيم إتقانك للغة الإنجليزية؟
+هل يمكنك القراءة والكتابة باللغة الإنجليزية العربية؟ ما بلغات أخرى لا تتكلم ؟',
+
+    'nationality' => 'الجنسية',
+    'gender' => 'الجنس',
+    'Educational Background' => 'المستوى التعليمي',
+    'Date Of Birth' => 'تاريخ الميلاد',
+    'Visa Status' => 'حالة الفيزا',
+    'Do You Have Experience Using Any Software For Work Purposes ?' => 'هل لديك خبرة في استخدام أي برنامج لأغراض العمل؟',
+    'List All Software You Have Used That is Related To This Position .' => 'قم بإدراج جميع البرامج التي استخدمتها والمرتبطة بهذا المنصب.',
+    'Are You Able To Communicate ?' => 'هل أنت قادر على التواصل؟ ',
+    'Do You Have A Valid Driver License ?' => 'هل لديك رخصة قيادة سارية المفعول؟',
+    'Mention Two Or Three Projects / Deals / Work Experience You Have Worked On That Are Relevant To This Position' => 'اذكر مشروعين أو ثلاثة مشاريع / صفقات / خبرة عملية عملت عليها وذات صلة بهذا المنصب',
+    'Can You Provide A Sample Of Your Work ?' => 'هل يمكنك تقديم عينة من عملك؟',
+    'Why Did You Applay For This Position ?' => 'لماذا تقدمت لهذا المنصب؟',
+    'Why Would You Like To Work With Our Company ?' => 'لماذا ترغب في العمل مع شركتنا؟',
+    'How Does This Position Fit In With Your Long - Term Goals ?' => 'كيف يتناسب هذا الموقف مع أهدافك طويلة المدى؟',
+    'Will You Be Willing To Work Over Time From Time To Time ?' => 'هل ستكون على استعداد للعمل بمرور الوقت من وقت لآخر؟',
+    'Where Can You See Yourself In 3 Years ? 5 Years ?' => 'أين يمكنك أن ترى نفسك خلال 3 سنوات؟ 5 سنوات ؟',
+    'Prior Experience Releted To Work . Please Include The Number Of Years ?' => 'خبرة سابقة متعلقة بالعمل. الرجاء تضمين عدد السنوات؟',
+    'What Can You Do To Utilize Skills And Help Company ?' => 'ما الذي يمكنك فعله للاستفادة من المهارات ومساعدة الشركة؟',
+    'What Are You Expecting From The Company ?' => 'ماذا تتوقع من الشركة؟',
+    'How Do You Manage Your Time ?' => 'كيف تدير وقتك ؟',
+    'What Is Your Status In Working With Team ?' => 'ما هي حالتك في العمل مع الفريق؟',
+    'Are You Interested To Sports ? Which Sports Activities Do You Practice ? How Can It Be Relevant To Your Work?' => 'هل أنت مهتم بالرياضة؟ ما هي الأنشطة الرياضية التي تمارسها؟ كيف يمكن أن يكون وثيق الصلة بعملك؟',
+    'What Do You Think Are Your Job Responsibilities At Work ? Give At Least 5' => 'ما رأيك في مسؤوليات وظيفتك في العمل؟ أعط ما لا يقل عن 5',
+    'What Is Your Advantage Among Other Applicants ? Why Should We Hire You ?' => 'ما هي ميزتك بين المتقدمين الآخرين؟ لماذا يجب علينا أن نعينك ؟',
+    'Are You Interester In Full - Time Employment , Part - Time Or Either ?' => 'هل أنت مهتم في وظيفة بدوام كامل ، بدوام جزئي أو بدوام جزئي؟',
+    'when is The Earliest You Can Start Working With Us ?' => 'ما هو أقرب وقت يمكنك بدء العمل معنا؟',
+    'If You are Currently Working  How Much Notice Do You Need To Give To Your Employer ?' => 'إذا كنت تعمل حاليًا ، ما مقدار الإشعار الذي تحتاج إلى تقديمه إلى صاحب العمل؟',
+    'What Are Your Salary Expectations ?' => 'ما هي توقعات راتبك؟',
+    'Are You Willing To Relocate ? If So , When Would You Be Available ?' => 'هل أنت على استعداد للانتقال ؟ إذا كان الأمر كذلك ، فمتى ستكون متاحًا؟',
+    'Are You Willing To Undertake A Drug Test As Part Of This Hiring Process ?' => 'هل أنت على استعداد لإجراء اختبار المخدرات كجزء من عملية التوظيف هذه؟',
+    'I Hereby That Above Information Is True And My Utmost Knowleedge .' => 'بموجب هذا ، فإن المعلومات الواردة أعلاه صحيحة ومعرفتي القصوى.',
+    'Employment Terms Questions' => 'أسئلة شروط التوظيف'
 ];

@@ -179,6 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Monarobase\CountryList\CountryListServiceProvider::class,
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class
     ],
 
     /*
@@ -234,6 +236,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Countries' => Monarobase\CountryList\CountryListFacade::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
+
     ],
 
 ];
