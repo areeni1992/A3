@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="{{ asset('assets/css/career.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/Request-quotation.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}" />
+{{--    @if(\Illuminate\Support\Facades\App::isLocal('ar'))--}}
+{{--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.min.css" integrity="sha512-3Lr2MkT5iW+jVhwKFUBa+zQk8Uklef98/3mebU6wNxTzj65enYrFXaeuqPAYWxcQd1GAt9aUBvYHOIcl2SUsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />--}}
+{{--    @endif--}}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     </head>
 <body>
@@ -35,11 +38,6 @@
 
 <section>
     <header>
-        <div class="brand">
-            <p class="text-center mt-2">
-                Brand Founded By perfect Line Sport Products LLC
-            </p>
-        </div>
         <!-- Start First Navbar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">

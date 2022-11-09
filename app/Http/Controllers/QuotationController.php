@@ -99,7 +99,7 @@ class QuotationController extends Controller
         $quot = new Quotation();
         if ($request->hasFile('attachment')) {
             $attach = $request->file('attachment');
-            $newName = time() . '_' . $attach->getClientOriginalName();
+            $newName = time().'_'.$attach->getClientOriginalName();
             $attach->storeAs('images', $newName, 'public');
             $quot->attachment = $newName;
             $quot->save();
@@ -108,49 +108,37 @@ class QuotationController extends Controller
             return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
 
         }
-        if ($request->hasFile('second_attach')) {
-            $secondAttach = $request->file('second_attach');
-            $newN = time() . '_' . $secondAttach->getClientOriginalName();
-            $secondAttach->storeAs('images', $newN, 'public');
-            $quot->second_attach = $newN;
-            $quot->save();
-            $quot->update($request->except('second_attach'));
-
-            return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
-
-        }
+//        if ($request->hasFile('second_attach')) {
+//            $secondAttach = $request->file('second_attach');
+//            $newN = time().'_'.$secondAttach->getClientOriginalName();
+//            $secondAttach->storeAs('images', $newN, 'public');
+//            $quot->second_attach = $newN;
+//            $quot->save();
+//            $quot->update($request->except('second_attach'));
+//
+//            return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
+//
+//        }
         return redirect()->back()->with('error', 'You Must Be Insert All Data');
 
 
     }
 
-//    public function getAllQuotations()
-//    {
-//        $quots = Quotation::where('insert_by', 'user')->get();
-//        $arr = [];
-//        foreach ($quots as $qu)
-//        {
-//            $arr[] = PDF::loadView('backend.user.pdf',(array)$qu);
-//        }
-//
-////        dd($arr);
-//        return view('backend.user.quots', compact('quots','arr'));
-//    }
-//
-//    public function generate_pdf()
-//    {
-//
-//        $quots = Quotation::where('insert_by', 'user')->get();
-//        $arr = [];
-//        foreach ($quots as $qu)
-//        {
-//            $arr += PDF::loadView('backend.user.pdf', $qu);
-//        }
-//
-//        dd($arr);
-//        return $pdfs->stream('document.pdf');
-//
-//    }
+    public function getAllQuotations()
+    {
+        $quots = Quotation::where('insert_by', 'user')->get();
+
+        return view('backend.user.quots', compact('quots'));
+    }
+
+    public function generate_pdf($id)
+    {
+
+        $exactData = Quotation::find($id);
+        $pdf = PDF::loadView('backend.user.pdf', array('exactData' => $exactData));
+        return $pdf->stream('document.pdf');
+
+    }
 
 
 }

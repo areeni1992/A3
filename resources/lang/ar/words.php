@@ -72,5 +72,128 @@ Can You Read And Write In English Arabic ? What Other Languages Do You Speak ?' 
     'Are You Willing To Relocate ? If So , When Would You Be Available ?' => 'هل أنت على استعداد للانتقال ؟ إذا كان الأمر كذلك ، فمتى ستكون متاحًا؟',
     'Are You Willing To Undertake A Drug Test As Part Of This Hiring Process ?' => 'هل أنت على استعداد لإجراء اختبار المخدرات كجزء من عملية التوظيف هذه؟',
     'I Hereby That Above Information Is True And My Utmost Knowleedge .' => 'بموجب هذا ، فإن المعلومات الواردة أعلاه صحيحة ومعرفتي القصوى.',
-    'Employment Terms Questions' => 'أسئلة شروط التوظيف'
+    'Employment Terms Questions' => 'أسئلة شروط التوظيف',
+
+    'Company Name' => 'إسم الشركة',
+    'Working Hours' => 'ساعات العمل',
+    'Working Days' => 'أيام العمل',
+
+    'House No.' => 'رقم المنزل',
+    'Street Name' => 'إسم الشارع',
+    'Postal Code' => 'الرمز البريدي',
+    'City' => 'المدينة',
+    'Region' => 'المنطقة',
+    'Country' => 'الدولة',
+    'Shop Size' => 'حجم المحل',
+    'How Many Branches' => 'كم عدد الأفرع',
+    'How Many Brands Currently In Your Hand' => 'كم عدد الماركات التجارية التي تمتلكها',
+
+    'Telephone No./S' => 'رقم الهاتف',
+    'Contact Person/S' => 'الشخص الذي يمكن الاتصال به',
+    'Designation/Title' => 'التعيين\ العنوان',
+    'Fax No.' => 'رقم الفاكس',
+    'Email Address' => 'عنوان البريد الالكتروني',
+
+    'Website' => 'الموقع الالكتروني',
+
+    'Sports Olympic Committee' => 'اللجنة الأولومبية الرياضية',
+    'Clubs' => 'النوادي',
+    'Federation' => 'الإتحاد',
+    'Government' => 'الحكومة',
+    'Reseller' => 'الموزع',
+    'Distributor' => 'Distributor',
+    'Others' => 'أخرى',
+
+    'Seaport' => 'ميناء',
+    'Airport' => 'مطار',
+
+    'Cash' => 'نقدي',
+    'Cheque' => 'Cheque',
+    'Bank Transfer' => 'تحويل بنكي',
+
+    'UAE Dirham (AED)' => 'درهم إماراتي (AED)',
+    'US Dollar (USD)' => 'دولار أمريكي (USD)',
+    'European Euro (EU)' => 'اليورو الأوروبي (الاتحاد الأوروبي)',
+
+    'Bank Name' => 'اسم البنك',
+    'Bldg. And Street' => 'مبنى. والشارع',
+    'Bank Account Name' => 'اسم الحساب المصرفي',
+    'Bank Account No.' => 'رقم الحساب المصرفي.',
+    'Swift Code' => 'Swift Code',
+    'Iban Number' => 'Iban Number',
+    'Title/Position' => 'العنوان / المنصب',
+    'Signature' => 'التوقيع',
+    'Forwarder Name: ' => 'اسم وكيل الشحن:',
+    'Via Air. Time Period Of Receiving Goods' => 'عبر المطار. الفترة الزمنية لاستلام البضائع',
+    'Via Sea. Time Period Of Receiving Goods' => 'عبر البحر. الفترة الزمنية لاستلام البضائع',
+    'Note: ' => 'ملحوظة: ',
+    'Official Confirmation/ Declaration/Information Will Only Be Done By The Authorized Person/S Via Authorized Emails.'
+    =>
+        'التأكيد الرسمي / الإعلان / المعلومات لن يتم إلا من قبل الشخص المرخص له عبر رسائل البريد الإلكتروني المعتمدة.',
+
+    'NAME OF THE COMPANY/STORE' => 'اسم الشركة / المتجر',
+    '(office) ADDRESS' => 'عنوان المكتب',
+    'BILLING/S ADDRESS' => 'عنوان الفواتير',
+    'SHIPPING ADDRESS' => 'عنوان الشحن',
+    'BUSINESS ORGANIZATION' => 'منظمة الأعمال',
+    'TYPE OF Buyer' => 'نوع المشتري',
+    'PAYMENT METHOD' => 'طريقة الدفع او السداد',
+    'CURRENCY' => 'عملة',
+    'BANK DETAILS' => 'التفاصيل المصرفية',
+    'Key Personnel & Contacts (Authorized To Sign And Accept PO/Contracts & Other Commercial Documents)' => 'الموظفون الرئيسيون وجهات الاتصال (المصرح لهم بتوقيع وقبول أوامر الشراء / العقود والمستندات التجارية الأخرى)',
+    'ORDERS INFORMATION' => 'طلب المعلومات',
+    'Shipment Method' => 'طريقة الشحن',
+    'Ports Of Shipment' => 'منافذ الشحن',
+    'preferred Shipment And Pricing Conditions:' => 'شروط الشحن والتسعير المفضلة:',
+    'Home' => 'الرئيسية',
+
+    'Telephone' => 'هاتف',
+    'whatsapp' => 'واتس اب',
+    'About US' => 'من نحن',
+
+    'Careers' => 'وظائف',
+    'Blogs' => 'المدونات',
+    'Select blog to read details' => 'حدد مدونة لقراءة التفاصيل',
+    'Request Quotations' => 'طلب عروض الأسعار',
+    'Contact Us' => 'تواصل معنا',
+
+    'Agents' => 'الوكلاء',
+    'email' => 'الإيميل',
+    'copyright' => 'حقوق النشر',
+    'all rights reserved by' => 'جميع الحقوق محفوظة',
+    'CUSTOMER SERVICES' => 'خدمة العملاء',
+
+    'Personal Information.' => 'معلومات شخصية.',
+    'First Name' => 'الاسم الاول',
+    'Last Name' => 'الاسم الأخير',
+    'E-Mail Addriss' => 'عنوان البريد الالكترونى',
+    'Mobile Number' => 'رقم الهاتف المحمول',
+
+    'Basic Product Information' => 'معلومات المنتج الأساسية',
+    'Business Name' => 'الاسم التجاري',
+    'Product Name' => 'اسم المنتج',
+    'Category' => 'الفئة',
+    'Quantity / Pieces' => 'الكمية / القطع',
+    'Max Budget' => 'الحد الأقصى للميزانية',
+
+    'Details' => 'تفاصيل',
+    'Contact Information' => "معلومات التواصل",
+
+    'Phone' => 'هاتف',
+    'Sourcing Purpose' => 'الغرض من المصادر',
+    'E-Mail' => 'البريد الإلكتروني',
+    'Shipping & Payments' => 'الشحن والمدفوعات',
+
+    'Time Period Of Receiving Goods (In Days)' => 'الفترة الزمنية لاستلام البضائع (بالأيام)',
+
+    'Number Of Days' => 'عدد الأيام',
+    'I Agree To Share My Business Card With Your Company' => 'أوافق على مشاركة بطاقة العمل الخاصة بي مع شركتك',
+    'I Have Read, Understood And Agreed To Abide By The Buying Request Posting Rules' => 'لقد قرأت وفهمت ووافقت على الالتزام بقواعد نشر طلب الشراء',
+    'Top Products' => 'أهم المنتجات',
+    'SUBSCRIBE TO NEWSLETTER' => 'اشترك في النشرة الإخبارية',
+    'DOWNLOAD CATALOG' => 'قم بتنزيل الكتالوج',
+    'LEARN MORE' => 'المزيد',
+
+
+
 ];

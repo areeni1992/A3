@@ -11,6 +11,7 @@ use App\Http\Controllers\Layouts\HomePage\HomeController;
 use App\Http\Controllers\NewsLatterController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\AgentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,8 @@ Route::get('/careers', [CareerController::class, 'index'])->name('careerPage');
 Route::post('/careers/send', [CareerController::class, 'requestCareer'])->name('requestCareer');
 Route::get('/user-qoutation-page', [QuotationController::class, 'userQoutPage'])->name('userQoutPage');
 Route::post('/send-request', [QuotationController::class, 'insertRequiest'])->name('insertRequiest');
+Route::get('/agents', [AgentController::class, 'index'])->name('agentsPage');
+Route::post('/agents/send', [AgentController::class, 'requestAgent'])->name('requestAgent');
 
 Route::group(
     [
@@ -46,7 +49,13 @@ Route::group(
     Route::get('/quotation', [QuotationController::class, 'dashIndex'])->name('dashIndex');
     Route::any('/quotation/{id?}', [QuotationController::class, 'insertQuotDate'])->name('insertQuotDate');
     Route::get('/quotations', [QuotationController::class, 'getAllQuotations'])->name('getAllQuotations');
+    Route::get('/quotations/generate_pdf/{id}', [QuotationController::class, 'generate_pdf'])->name('generate_pdf');
+    Route::get('/agents', [AgentController::class, 'insert'])->name('agentsDash');
+    Route::any('/insert-agent-page-date/{id?}', [AgentController::class, 'insertPageDate'])->name('insertPageDate');
+
+
 });
+
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

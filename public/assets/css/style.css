@@ -6,6 +6,12 @@ section header .navbar {
     background-color: #FF8A00;
 }
 
+.short_text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 /* search bar */
 .saerch-bar .container .row form .input-group input {
     background-color: #F1F1F1;

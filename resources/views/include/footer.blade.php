@@ -15,68 +15,55 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-3">DISCOVER</h5>
+                    <h5 class="mb-3">{{ __('words.CUSTOMER SERVICES') }}</h5>
                     <ul class="list-unstyled text-decoration-none">
                         <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">About US</a>
+                            <a href="{{ route('careerPage') }}" class="text-dark text-decoration-none text-muted">{{ __('words.Careers') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('careerPage') }}" class="text-dark text-decoration-none text-muted">Careers</a>
+                            <a href="{{ route('userQoutPage') }}" class="text-dark text-decoration-none text-nowrap text-muted">{{ __('words.Request Quotations') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('userQoutPage') }}" class="text-dark text-decoration-none text-nowrap text-muted">Request Quotations</a>
+                            <a href="{{ route('contactPage') }}" class="text-dark text-decoration-none text-muted">{{ __('words.Contact Us') }}</a>
                         </li>
                         <li>
-                            <a href="{{ route('contactPage') }}" class="text-dark text-decoration-none text-muted">Contact Us</a>
+                            <a href="{{ route('agentsPage') }}" class="text-dark text-decoration-none text-muted">{{ __('words.Agents') }}</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-3">DISTRIBUTER CATEGORIES</h5>
-                    <ul class="list-unstyled text-decoration-none">
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Warehouse Distributor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">A3net</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-nowrap text-muted">Marketing Area</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Shops</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Affilates</a>
-                        </li>
-                    </ul>
-                </div>
+{{--                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">--}}
+{{--                    <h5 class="mb-3">DISTRIBUTER CATEGORIES</h5>--}}
+{{--                    <ul class="list-unstyled text-decoration-none">--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-muted">Warehouse Distributor--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-muted">A3net</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-nowrap text-muted">Marketing Area</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-muted">Contact</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-muted">Shops</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#" class="text-dark text-decoration-none text-muted">Affilates</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-3 text-nowrap">CUSTOMER SERVICES</h5>
+                    <h5 class="mb-3 text-nowrap">DISCOVER</h5>
                     <ul class="list-unstyled text-decoration-none">
+                        @foreach($pages as $page)
                         <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Faq's
+                            <a href="{{ route('showPage', $page) }}" class="text-dark text-decoration-none text-muted">{{ $page->translate(app()->getLocale())->title }}
                             </a>
                         </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">My Account</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-nowrap text-muted">My orders</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Whatsapp Chatbot</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Payment Methods</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark text-decoration-none text-muted">Affilates</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -86,7 +73,7 @@
         <div class="copyright p-3 bg-light text-center text-md-start">
             <div class="row">
                 <div class="col-md-4 text-">
-                    copyright © 2022 all rights reserved by
+                    {{ __('words.copyright') }} © <?php echo date("Y"); ?> {{ __('words.all rights reserved by') }}
                     <a href="#">
                         <img src="{{ config('app.url').'/storage/'.$settings['logo'] }}" class="img-fluid rounded-circle" alt="Error in Download The  Image" width="20">
                     </a>
@@ -125,6 +112,14 @@
         },
     });
 </script>
+<script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+<script>
+    var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"{{$settings['whatsapp']}}","welcomeMessage":"wellcom","zIndex":999999,"btnColorScheme":"light"};
+    window.onload = () => {
+        _waEmbed(wa_btnSetting);
+    };
+</script>
+
 </body>
 </html>
 @endif

@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="position" value="{{ old('position') }}" placeholder="{{__('words.Desired Position')}}" class="form-control mb-3 border-0 shadow-sm p-3">
-                        @error('position')
+                        <input type="text" name="desired_position" value="{{ old('desired_position') }}" placeholder="{{__('words.Desired Position')}}" class="form-control mb-3 border-0 shadow-sm p-3">
+                        @error('desired_position')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -276,7 +276,6 @@ Can You Read And Write In English Arabic ? What Other Languages Do You Speak ?')
                             <div class="alert alert-danger">{{ $errors->first('employment_questions.3') }}</div>
                         @endif
                     </div>
-
                     <div class="col-md-12">
                         <input type="text" name="employment_questions[]" value="{{ old('employment_questions.4') }}" placeholder="{{ __('words.Are You Willing To Relocate ? If So , When Would You Be Available ?') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                         @if ($errors->has('employment_questions.4'))
@@ -308,7 +307,7 @@ Can You Read And Write In English Arabic ? What Other Languages Do You Speak ?')
                             </label>
                         </div>
                         @error('ok')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="alert alert-danger">{{ $errors->first('ok') }}</div>
                         @enderror
                     </div>
                     @if ($message = Session::get('success'))

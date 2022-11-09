@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png') }}">
     <title>
@@ -24,7 +26,6 @@
     <script>
         tinymce.init({
             selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
-            plugins: 'code table lists',
             toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
         });
     </script>
@@ -84,10 +85,10 @@
                     <a href="{{ route('products') }}" class="nav-link cursor-pointer">{{ __('words.products') }}</a>
                     <a href="{{ route('subscribers') }}" class="nav-link cursor-pointer">Subscribers</a>
                     <a href="{{ route('messages') }}" class="nav-link cursor-pointer">Messages</a>
-                    <a href="{{ route('insert') }}" class="nav-link cursor-pointer">Career</a>
+                    <a href="{{ route('insert') }}" class="nav-link cursor-pointer">Career Page Settings</a>
                     <a href="{{ route('dashIndex') }}" class="nav-link cursor-pointer">Quotations Page Settings</a>
-{{--                    <a href="{{ route('getAllQuotations') }}" class="nav-link cursor-pointer">Quotaionts</a>--}}
-{{--                    <a class="nav-link cursor-pointer" @class('active') id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>--}}
+                    <a href="{{ route('getAllQuotations') }}" class="nav-link cursor-pointer">Quotaionts</a>
+                    <a href="{{ route('agentsDash') }}" class="nav-link cursor-pointer">Agents Page Settings</a>
                 </div>
 
             </ul>

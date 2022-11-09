@@ -10,14 +10,18 @@ class NewsLatterController extends Controller
 {
     public function store(Request $request)
     {
-        if (!Newsletter::isSubscribed($request->user_email)) {
-            Newsletter::subscribe($request->user_email);
-            $userSub = new UserSub();
-            $userSub->user_email = $request->user_email;
-            $userSub->status = 'subscriber';
-            $userSub->save();
+        if (!is_null($request->user_email))
+        {
+            if (!Newsletter::isSubscribed($request->user_email)) {
+                Newsletter::subscribe($request->user_email);
+                $userSub = new UserSub();
+                $userSub->user_email = $request->user_email;
+                $userSub->status = 'subscriber';
+                $userSub->save();
 
-            return redirect()->back();
+                return redirect()->back();
+            }
+
         }
 
         return redirect()->back();

@@ -41,9 +41,9 @@ class CareerController extends Controller
             'background' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
         foreach (config('app.languages') as $key => $lang) {
-            $data[$key . '*.page_title'] = 'required';
-            $data[$key . '*.short_desc'] = 'nullable';
-            $data[$key . '*.desc'] = 'nullable';
+            $data[$key.'*.page_title'] = 'required';
+            $data[$key.'*.short_desc'] = 'nullable';
+            $data[$key.'*.desc'] = 'nullable';
         }
         $validated = $request->validate($data);
         if ($validated) {
@@ -95,7 +95,6 @@ class CareerController extends Controller
             'name' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'position' => 'required',
             'nationality' => 'required',
             'educational_background' => 'required',
             'general_questions.*' => 'sometimes|required',
@@ -105,8 +104,11 @@ class CareerController extends Controller
             'attachment' => 'nullable',
             'ok' => 'nullable'
         ];
-//        $valid = $request->validate($data);
 
+        $valid = $request->validate($data, [
+            'general_questions.*.required' => 'This field is required.',
+            'employment_questions.*.required' => 'This field is required.'
+        ]);
 
             $gq = json_encode($request->general_questions);
             $dq = json_encode($request->employment_questions);
@@ -114,7 +116,7 @@ class CareerController extends Controller
             $career = new Career();
             $career->start_date = $request->start_date;
             $career->end_date = $request->end_date;
-            $career->desired_position = $request->position;
+            $career->desired_position = $request->desired_position;
             $career->name = $request->name;
             $career->age = $request->age;
             $career->gender = $request->gender;

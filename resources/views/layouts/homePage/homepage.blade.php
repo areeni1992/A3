@@ -51,7 +51,7 @@
                     <h3 class="mt-4">
                         {{ $sectionsData->translate(app()->getLocale())->first_banner_text }}
                     </h3>
-                    <a class="btn mt-3 clothes-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids) ? $sectionsData->page_ids['first'] : '' )}}">SHOP NOW</a>
+                    <a class="btn mt-3 clothes-btn" href="{{ route('showPage',  is_array($sectionsData->page_ids) ? $sectionsData->page_ids['first'] : '' )}}">{{ __('words.LEARN MORE') }}</a>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
             <div class="container h-75 d-flex flex-column justify-content-center">
                 <h4 class="text-black">{{ $sectionsData->translate(app()->getLocale())->second_banner_text }}</h4>
                 <a class="btn market-btn bg-black text-white mt-2" href="{{ route('showPage', is_array($sectionsData->page_ids) ? $sectionsData->page_ids['second'] : '')}}">
-                    SHOP NOW
+                    {{ __('words.LEARN MORE') }}
                 </a>
 
                 <img
@@ -132,7 +132,7 @@
                                 {{ $sectionsData->translate(app()->getLocale())->third_banner_text }}
 
                             </p>
-                            <a class="btn apperal-btn" href="{{ route('showPage',  $sectionsData->page_ids['third']) }}">SHOP NOW</a>
+                            <a class="btn apperal-btn" href="{{ route('showPage',  $sectionsData->page_ids['third']) }}">{{ __('words.LEARN MORE') }}</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 p-0 d-none d-lg-block d-md-block">
@@ -178,7 +178,7 @@
             <div class="container h-100 d-flex flex-column justify-content-center">
                 <h2><span>{{ $sectionsData->translate(app()->getLocale())->fourth_banner_title }}</span></h2>
                 <p class="text-muted">{{ $sectionsData->translate(app()->getLocale())->fourth_banner_text }}</p>
-                <a class="btn loyal-btn py-2" href="{{ route('showPage', $sectionsData->page_ids['last']) }}">LEARN MORE</a>
+                <a class="btn loyal-btn py-2" href="{{ route('showPage', $sectionsData->page_ids['last']) }}">{{ __('words.LEARN MORE') }}</a>
             </div>
         </div>
     </section>
@@ -217,7 +217,7 @@
                             class="newsLetter-img p-5 h-100 d-flex flex-column justify-content-center align-content-center text-white"
                             style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->catalog_image }}"
                         >
-                            <h3 class="text-nowrap">SUBSCRIBE TO NEWSLETTER</h3>
+                            <h3 class="text-nowrap">{{ __('words.SUBSCRIBE TO NEWSLETTER') }}</h3>
                             <form action="{{ route('newsletter') }}" method="post">
                                 @csrf
                                 <input
@@ -241,7 +241,7 @@
                         >
                             <h3>{{ $sectionsData->catalog_text }}</h3>
                             <a class="btn btn-light gymFloor-btn mb-3" href="{{ config('app.url').'/storage/images/'.$sectionsData->catalog }}">
-                                DOWNLOAD CATALOG
+                                {{ __('words.DOWNLOAD CATALOG') }}
                             </a>
                         </div>
                     </div>
@@ -255,7 +255,7 @@
     <section>
         <div class="box-three">
             <div class="container-fluid my-5">
-                <h3 class="text-center mb-4">Top Products</h3>
+                <h3 class="text-center mb-4">{{ __('words.Top Products') }}</h3>
                 <div class="owl-carousel owl-theme">
                     @foreach($products as $pro)
                         @if($sectionsData->cat_ids[5] == $pro->parent_id)
@@ -281,8 +281,8 @@
             <div class="container">
                 <div class="d-flex flex-column justify-content-center">
                     <div class="text-center">
-                        <h3>Blogs</h3>
-                        <p class="text-muted">Select blog to read details</p>
+                        <h3>{{ __('words.Blogs') }}</h3>
+                        <p class="text-muted">{{ __('words.Select blog to read details') }}</p>
                     </div>
                     <div class="row">
                         @foreach($posts as $post)
@@ -302,14 +302,15 @@
                                             <div class="card-body">
                                                 <small class="text-muted">{{ $post->created_at->format('d/m/Y') }}</small>
                                                 <h5 class="card-title">{{ $post->translate(app()->getLocale())->title }}</h5>
-                                                <p class="card-text text-muted">
-                                                    {!! $post->translate(app()->getLocale())->body !!}
+                                                <div></div>
+                                                <p class="card-text text-muted short_text">
+                                                    {!! \Illuminate\Support\Str::limit($post->translate(app()->getLocale())->body, 200) !!}
                                                 </p>
                                                 <a
                                                     href="{{ route('showPost', $post) }}"
                                                     class="card-text text-end text-decoration-none d-flex justify-content-end"
                                                 >
-                                                    DETAILS <i class="bi bi-arrow-right ms-2"></i>
+                                                    {{ __('words.Details') }} <i class="bi bi-arrow-right ms-2"></i>
                                                 </a>
                                             </div>
                                         </div>

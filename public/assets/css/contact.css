@@ -123,7 +123,7 @@ section .message form input[type="file"]::-webkit-file-upload-button {
 }
 
 section .message form input[type="file"]::before {
-    content: 'Attachments ';
+    content: 'Attachments ' !important;
     color: #CCC;
     display: inline-block;
     border-radius: 3px;

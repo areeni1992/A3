@@ -107,8 +107,8 @@ section .message form input[type="file"]::-webkit-file-upload-button {
     visibility: hidden;
 }
 
-section .message form .input-file-1::before {
-    content: 'Attachments ';
+section .quotation form .input-file-1::before {
+    content: 'Attachments ' !important;
     color: #CCC;
     display: inline-block;
     border-radius: 3px;
@@ -121,13 +121,13 @@ section .message form .input-file-1::before {
     font-size: 13px;
 }
 
-section .message form input[type="file"] {
-    content: 'Attachments ';
+section .quotation form input[type="file"] {
+    content: 'Attachments ' !important;
     color: transparent;
 }
 
-section .message form .input-file-2::before {
-    content: 'Attachments ';
+section .quotation form .input-file-2::before {
+    content: 'Attachments ' !important;
     color: #CCC;
     display: inline-block;
     border-radius: 3px;

@@ -12,7 +12,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ config('app.url') }}">Home</a>
+                                <a href="{{ config('app.url') }}">{{ __('words.Home') }}</a>
                             </li>
                             <li class="breadcrumb-item active">{{ !is_null($quotData->translate(app()->getLocale())->page_title) ? $quotData->translate(app()->getLocale())->page_title : '' }}</li>
                         </ol>
@@ -25,7 +25,7 @@
     <!-- End Form Input -->
 
     <section>
-        <div class="message py-4">
+        <div class="message quotation py-4">
             <div class="container">
                 <div class="mb-4">
                     <h5 class="h5-color text-center">{{ $quotData->translate(app()->getLocale())->page_title ?? '' }}</h5>
@@ -37,49 +37,49 @@
 
                 <form action="{{ route('insertRequiest') }}" method="POST" class="row shadow" enctype="multipart/form-data">
                     @csrf
-                    <h5 class="text-center mb-4 h5-color">Personal Information</h5>
+                    <h5 class="text-center mb-4 h5-color">{{ __('words.Personal Information.') }}</h5>
 
                     <div class="col-md-4">
-                        <input type="text" name="f_name" placeholder="First Name" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="f_name" placeholder="{{ __('words.First Name') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="l_name" placeholder="Last Name" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="l_name" placeholder="{{ __('words.Last Name') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
                         <select name="country" name="country" id="country" class="form-select mb-3 text-muted border-0 shadow-sm p-3">
-                            <option class="option" selected="" disabled="" >Country</option>
+                            <option class="option" selected="" disabled="" >{{ __('words.Country') }}</option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country }}">{{ $country }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text"name="email" placeholder="E-Mail Addriss" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text"name="email" placeholder="{{ __('words.E-Mail Addriss') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="mobile" placeholder="Mobile Number" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="mobile" placeholder="{{ __('words.Mobile Number') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-12">
-                        <input type="file" name="attachment" placeholder="Phone Number" class="form-control mb-3 border-0 shadow-sm p-2 input-file-1">
+                        <input type="file" name="attachment" placeholder="{{ __('words.Phone Number') }}" class="form-control mb-3 border-0 shadow-sm p-2 input-file-1">
                     </div>
 
-                    <h5 class="text-center my-2 h5-color">Basic Product Information</h5>
+                    <h5 class="text-center my-2 h5-color">{{ __('words.Basic Product Information') }}</h5>
 
                     <div class="col-md-4">
-                        <input type="text" name="b_name" placeholder="Business Name" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="b_name" placeholder="{{ __('words.Business Name') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="prod_name" placeholder="Product Name" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="prod_name" placeholder="{{ __('words.Product Name') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
                         <select class="form-select mb-3 text-muted border-0 shadow-sm p-3">
-                            <option class="option" selected="" disabled="" name="category">Category</option>
+                            <option class="option" selected="" disabled="" name="category">{{ __('words.Category') }}</option>
                             @foreach($categories as $cat)
                                 <option value="{{ $cat->name }}">{{ $cat->name }}</option>
                             @endforeach
@@ -96,16 +96,16 @@
 {{--                    </div>--}}
 
                     <div class="col-md-4">
-                        <input type="text" name="quantity" placeholder="Quantity / Pieces" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="quantity" placeholder="{{ __('words.Quantity / Pieces') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="budget" placeholder="Max Budget" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="budget" placeholder="{{ __('words.Max Budget') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
                     <div class="col-md-4">
                         <select class="form-select mb-3 text-muted border-0 shadow-sm p-3">
-                            <option class="option" selected="" name="currency" disabled="">Currency</option>
+                            <option class="option" selected="" name="currency" disabled="">{{ __('words.CURRENCY') }}</option>
                             <option value="1">USD</option>
                             <option value="2">EUR</option>
                             <option value="3">AED</option>
@@ -114,77 +114,77 @@
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="details" placeholder="Details" class="form-control mb-3 border-0 shadow-sm p-3">
+                        <input type="text" name="details" placeholder="{{ __('words.Details') }}" class="form-control mb-3 border-0 shadow-sm p-3">
                     </div>
 
-                    <div class="col-md-4">
-                        <input type="file" name="second_attach" placeholder="Attachments" class="form-control mb-3 border-0 shadow-sm p-2 input-file-2">
-                    </div>
+{{--                    <div class="col-md-4">--}}
+{{--                        <input type="file" name="second_attach" placeholder="Attachments" style="content: 'Attachment'!important;" class="form-control mb-3 border-0 shadow-sm p-2 input-file-2">--}}
+{{--                    </div>--}}
 
                     <!-- Sourcing Purpose -->
                     <div class="col-md-12 mt-3">
-                        <h5 class="fw-bold my-3">Sourcing Purpose</h5>
+                        <h5 class="fw-bold my-3">{{ __('words.Sourcing Purpose') }}</h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Sports Olympic Committe" id="Committe">
                             <label class="form-check-label" for="Committe">
-                                Sports Olympic Committe
+                                {{ __('words.Sports Olympic Committee') }}
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Clubs" id="Clubs">
-                            <label class="form-check-label" for="Clubs"> Clubs </label>
+                            <label class="form-check-label" for="Clubs"> {{ __('words.Clubs') }} </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Federation" id="Federation">
                             <label class="form-check-label" for="Federation">
-                                Federation
+                                {{ __('words.Federation') }}
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Government" id="Government">
                             <label class="form-check-label" for="Government">
-                                Government
+                                {{ __('words.Government') }}
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Reseller" id="Reseller">
                             <label class="form-check-label" for="Reseller">
-                                Reseller
+                                {{ __('words.Reseller') }}
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Distributor" id="Distributor">
                             <label class="form-check-label" for="Distributor">
-                                Distributor
+                                {{ __('words.Distributor') }}
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sourcing_purp" value="Others" id="Other-Sourcing">
                             <label class="form-check-label" for="Other-Sourcing">
-                                Others
+                                {{ __('words.Others') }}
                             </label>
                         </div>
                     </div>
 
                     <!-- Shipping & Payments -->
                     <h5 class="text-center h5-color mt-3 mt-md-0">
-                        Shipping &amp; Payments
+                        {{ __('words.Shipping & Payments') }}
                     </h5>
                     <div class="col-md-3 mt-3">
-                        <h5 class="fw-bold my-3">Shipment Method</h5>
+                        <h5 class="fw-bold my-3">{{ __('words.Shipment Method') }}</h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="shipment_methode" value="Seaport" id="Seaport" checked="">
-                            <label class="form-check-label" for="Seaport"> Seaport </label>
+                            <label class="form-check-label" for="Seaport"> {{ __('words.Seaport') }} </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="shipment_methode" value="Airport" id="Airport">
-                            <label class="form-check-label" for="Airport"> Airport </label>
+                            <label class="form-check-label" for="Airport"> {{ __('words.Airport') }} </label>
                         </div>
                     </div>
 
                     <div class="col-md-6 mt-3">
                         <h5 class="fw-bold my-3">
-                            Prefrred Shipment &amp; Pricing Conditions
+                            {{ __('words.preferred Shipment And Pricing Conditions:') }}
                         </h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="shipment_price" value="FOB" id="FOB" checked="">
@@ -197,11 +197,11 @@
                     </div>
 
                     <div class="col-md-3 mt-3">
-                        <h5 class="fw-bold my-3">Source Purpose</h5>
+                        <h5 class="fw-bold my-3">{{ __('words.PAYMENT METHOD') }}</h5>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="source_purp" value="Cash" id="Cash" checked="">
-                            <label class="form-check-label" for="Cash"> Cash </label>
+                            <label class="form-check-label" for="Cash"> {{ __('words.Cash') }} </label>
                         </div>
 
                         <div class="form-check">
@@ -212,56 +212,55 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="source_purp" value="Bank Transfer" id="Bank">
                             <label class="form-check-label" for="Bank">
-                                Bank Transfer
+                                {{ __('words.Bank Transfer') }}
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="source_purp" value="Other" id="Other-Purpose">
                             <label class="form-check-label" for="Other-Purpose">
-                                Other
+                                {{ __('words.Others') }}
                             </label>
                         </div>
                     </div>
 
                     <!-- Privacy Policy -->
                     <div class="col-md-3 mt-3">
-                        <h5 class="fw-bold">Contact Information's</h5>
+                        <h5 class="fw-bold">{{ __('words.Contact Information') }}</h5>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="contact_info" value="Phone" id="Phone" checked="">
-                            <label class="form-check-label" for="Phone"> Phone </label>
+                            <label class="form-check-label" for="Phone"> {{ __('words.Phone') }} </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="contact_info" value="E-Mail" id="email">
-                            <label class="form-check-label" for="email"> E-Mail </label>
+                            <label class="form-check-label" for="email"> {{ __('words.E-Mail') }} </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="contact_info" value="Other" id="Other-Contact">
                             <label class="form-check-label" for="Other-Contact">
-                                Others
+                                {{ __('words.Others') }}
                             </label>
                         </div>
                     </div>
 
                     <div class="col-md-9 mt-3">
-                        <h5 class="fw-bold">Time Period Of Receiving Goods (In Days)</h5>
+                        <h5 class="fw-bold">{{ __('words.Time Period Of Receiving Goods (In Days)') }}</h5>
 
-                        <input class="form-control border-0 p-3 w-50 shadow-sm mt-4" type="text" name="time_period" placeholder="Number Of Days">
+                        <input class="form-control border-0 p-3 w-50 shadow-sm mt-4" type="text" name="time_period" placeholder="{{ __('words.Number Of Days') }}">
                     </div>
                     <div class="col-md-12 mt-5">
                         <div class="form-check">
                             <input class="form-check-input" name="agree" type="checkbox" value="no" id="agree">
                             <label class="form-check-label fw-bold label" for="agree">
-                                I Agree To Share My Buisness Card With Your Company</label>
+                                {{ __('words.I Agree To Share My Business Card With Your Company') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" name="read" type="checkbox" value="yes" id="read">
                             <label class="form-check-label fw-bold label" for="read">
-                                I Have Read, Understood And Agreed To Abide By The Buying
-                                Request Posting Rules
+                                {{ __('words.I Have Read, Understood And Agreed To Abide By The Buying Request Posting Rules') }}
                             </label>
                         </div>
                     </div>
