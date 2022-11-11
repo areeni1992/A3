@@ -38,7 +38,7 @@ class StorehomePageRequest extends FormRequest
         {
             if($this->method() == "POST")
             {
-                $data['page_ids.'.$val] = 'required';
+                $data['page_ids.'.$val] = 'nullable';
             }
         }
         foreach (config('translatable.locales') as $lang)

@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="{{ asset('assets/css/career.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/Request-quotation.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/post.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/faq.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/policy.css') }}" />
 {{--    @if(\Illuminate\Support\Facades\App::isLocal('ar'))--}}
 {{--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.min.css" integrity="sha512-3Lr2MkT5iW+jVhwKFUBa+zQk8Uklef98/3mebU6wNxTzj65enYrFXaeuqPAYWxcQd1GAt9aUBvYHOIcl2SUsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />--}}
 {{--    @endif--}}

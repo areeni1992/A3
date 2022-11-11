@@ -89,6 +89,11 @@
                     <a href="{{ route('dashIndex') }}" class="nav-link cursor-pointer">Quotations Page Settings</a>
                     <a href="{{ route('getAllQuotations') }}" class="nav-link cursor-pointer">Quotaionts</a>
                     <a href="{{ route('agentsDash') }}" class="nav-link cursor-pointer">Agents Page Settings</a>
+                    <a href="{{ route('faqSettings') }}" class="nav-link cursor-pointer">FAQ Page Settings</a>
+                    <a href="{{ route('faqIndex') }}" class="nav-link cursor-pointer">FAQ</a>
+                    <a href="{{ route('indexQuestions') }}" class="nav-link cursor-pointer">Questions & Answers</a>
+                    <a href="{{ route('policySettingPage') }}" class="nav-link cursor-pointer">Policy Settings</a>
+                    <a href="{{ route('Plicies') }}" class="nav-link cursor-pointer">Create Policy</a>
                 </div>
 
             </ul>

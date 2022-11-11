@@ -64,6 +64,16 @@
                             </a>
                         </li>
                         @endforeach
+                         <li>
+                             <a href="{{ route('faqPage') }}" class="text-dark text-decoration-none text-muted">
+                                 FAQ
+                             </a>
+                         </li>
+                        <li>
+                            <a href="{{ route('policyPage') }}" class="text-dark text-decoration-none text-muted">
+                                Policy
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -79,11 +89,9 @@
                     </a>
                 </div>
                 <div class="col-md-8 text-end mt-3 mt-md-0">
-                    <a href="#" class="me-2">Terms &amp; Condition</a>
-                    <a href="#" class="me-2">Warranty Policies</a>
-                    <a href="#" class="me-2">Provacy policies</a>
-                    <a href="#" class="me-2">Return policies</a>
-                    <a href="#">Cookie policies</a>
+{{--                    @foreach($policies as $row)--}}
+{{--                    <a href="{{ route('singlePolicy', $row->id) }}" class="me-2">{{ $row->translate(app()->getLocale())->policy_name }}</a>--}}
+{{--                    @endforeach--}}
                 </div>
             </div>
         </div>

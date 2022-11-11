@@ -5,15 +5,15 @@
         <header>
             <!-- Start header Title -->
 
-            <div class="title-header" style="background-image: url({{ config('app.url').'/storage/images/'.$careerData->background }}) !important;">
+            <div class="title-header" style="background-image: url({{ isset($careerData->background ) ? config('app.url').'/storage/images/'.$careerData->background : '' }}) !important;">
                 <div class="container h-100 d-flex flex-column justify-content-center">
-                    <h3 class="fw-bold">{{ $careerData->translate(app()->getLocale())->page_title ?? '' }}</h3>
+                    <h3 class="fw-bold">{{ isset($careerData->page_title)  ? $careerData->translate(app()->getLocale())->page_title : '' }}</h3>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ config('app.url') }}">Home</a>
                             </li>
-                            <li class="breadcrumb-item active">{{ $careerData->translate(app()->getLocale())->page_title ?? '' }}</li>
+                            <li class="breadcrumb-item active">{{ isset($careerData->page_title)  ? $careerData->translate(app()->getLocale())->page_title : '' }}</li>
                         </ol>
                     </nav>
                 </div>

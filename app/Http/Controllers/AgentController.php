@@ -32,7 +32,7 @@ class AgentController extends Controller
         return view('backend.user.agents', compact('agenstData'));
     }
 
-    public function insertPageDate(Request $request)
+    public function insertPageData(Request $request)
     {
         $data = [
             'background' => 'image|mimes:jpeg,png,jpg,gif,svg'

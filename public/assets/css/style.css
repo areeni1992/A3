@@ -100,8 +100,8 @@ section .market .market-btn {
 
 section .market .market-img1 {
     position: absolute;
-    top: 190px;
-    left: 135px;
+    top: 93px;
+    left: 637px;
     z-index: 1;
 }
 
@@ -202,7 +202,8 @@ section .blogs .container .row .card .row small {
 }
 
 section .blogs .container .row .card .row img {
-    height: 90%;
+    height: 200px;
+    width: 200px;
 
 }
 
@@ -421,6 +422,7 @@ section footer .copyright a {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 
+    section.my-home { margin-top: 90px !important;}
     /* The Market */
     section .market {
         background-color: #C8CCBE;
@@ -429,9 +431,9 @@ section footer .copyright a {
     }
 
     /* Box Slider Two */
-    section .box-two {
-        margin-top: 30%;
-    }
+    /*section .box-two {*/
+    /*    margin-top: 30%;*/
+    /*}*/
 
     /* Loyalty Program */
     section .loyal {

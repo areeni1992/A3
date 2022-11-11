@@ -22,9 +22,9 @@
         </div>
     @endif
     <h3>Agents Settings Page</h3>
-    <form action="{{ route('insertPageDate', $agenstData->id ?? '') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('insertPageData', $agenstData->id ?? '') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @if(!empty($careerData)) <input type="hidden" name="_method" value="PUT">@endif
         <div class='row d-flex'>
             @foreach( config('app.languages') as $key => $lang)
                 <div class="col-md-6 @if($key == 'ar') {{ 'text-end' }} @endif">

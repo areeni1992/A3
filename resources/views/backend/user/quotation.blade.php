@@ -24,12 +24,13 @@
     <h3>Career</h3>
     <form  action="{{ route('insertQuotDate', $quotData->id ?? '') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @if(!empty($quotData)) <input type="hidden" name="_method" value="PUT">@endif
         <div class='row d-flex'>
             @foreach( config('app.languages') as $key => $lang)
                 <div class="col-md-6 @if($key == 'ar') {{ 'text-end' }} @endif">
                     <h4>{{ $lang }}</h4>
                     <!-- title  -->
+                    <input type="hidden" name="insert_by" value="admin">
                     <div class="form-outline mb-4">
                         <label class="form-label" for="title"> {{ __('words.title') }} </label>
                         <input type="text" id="page_title" class="form-control" name="{{$key}}[page_title]" value="{{ isset($quotData) ? $quotData->translate($key)->page_title : '' }}"/>

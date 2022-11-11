@@ -12,6 +12,9 @@ use App\Http\Controllers\NewsLatterController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\PolicyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +39,11 @@ Route::get('/user-qoutation-page', [QuotationController::class, 'userQoutPage'])
 Route::post('/send-request', [QuotationController::class, 'insertRequiest'])->name('insertRequiest');
 Route::get('/agents', [AgentController::class, 'index'])->name('agentsPage');
 Route::post('/agents/send', [AgentController::class, 'requestAgent'])->name('requestAgent');
+Route::get('/faq-page', [FaqController::class, 'faqPage'])->name('faqPage');
+Route::get('/single-faq/{id}', [FaqController::class, 'singleFaq'])->name('singleFaq');
+
+Route::get('/policy-page', [PolicyController::class, 'PolicyPage'])->name('policyPage');
+Route::get('/single-policy/{id}', [PolicyController::class, 'singlePolicy'])->name('singlePolicy');
 
 Route::group(
     [
@@ -51,7 +59,32 @@ Route::group(
     Route::get('/quotations', [QuotationController::class, 'getAllQuotations'])->name('getAllQuotations');
     Route::get('/quotations/generate_pdf/{id}', [QuotationController::class, 'generate_pdf'])->name('generate_pdf');
     Route::get('/agents', [AgentController::class, 'insert'])->name('agentsDash');
-    Route::any('/insert-agent-page-date/{id?}', [AgentController::class, 'insertPageDate'])->name('insertPageDate');
+    Route::any('/insert-agent-page-date/{id?}', [AgentController::class, 'insertPageData'])->name('insertPageData');
+
+    Route::get('/faq-create', [FaqController::class, 'index'])->name('faqSettings');
+    Route::any('/insert-faq-setting-data/{id?}', [FaqController::class, 'faqSettingData'])->name('faqSettingData');
+    Route::get('/faq', [FaqController::class, 'faqIndex'])->name('faqIndex');
+    Route::get('/create-faq-name-page', [FaqController::class, 'faqName'])->name('faqName');
+    Route::post('/insert-faq-name', [FaqController::class, 'insertFaqName'])->name('insertFaqName');
+    Route::post('/delete-faq-name/{id}', [FaqController::class, 'deleteFaqName'])->name('deleteFaqName');
+    Route::get('/edit-faq-name/{id}', [FaqController::class, 'editFaqName'])->name('editFaqName');
+    Route::put('/update-faq-name/{id}', [FaqController::class, 'updateFaqName'])->name('updateFaqName');
+
+    Route::get('/questions-answers-page', [QuestionController::class, 'index'])->name('indexQuestions');
+    Route::get('/create-questions-answers-page', [QuestionController::class, 'createQuestion'])->name('createQuestion');
+    Route::post('/insert-question', [QuestionController::class, 'insertQuestin'])->name('insertQuestin');
+    Route::get('/edit-question-page/{id}', [QuestionController::class, 'editQuestion'])->name('editQuestion');
+    Route::put('/update-question-page/{id}', [QuestionController::class, 'updateQuestion'])->name('updateQuestion');
+    Route::post('/delete-question-page/{id}', [QuestionController::class, 'deleteQuestion'])->name('deleteQuestion');
+
+    Route::get('/policy-page-settings', [PolicyController::class, 'policySettingPage'])->name('policySettingPage');
+    Route::any('/insert-page-settings/{id}', [PolicyController::class, 'policySetting'])->name('policySetting');
+    Route::get('/policies', [PolicyController::class, 'index'])->name('Plicies');
+    Route::get('/create-policy-page', [PolicyController::class, 'create'])->name('createPolicyPage');
+    Route::post('create-policy', [PolicyController::class, 'store'])->name('createPolicy');
+    Route::get('edit-policy-page/{id}', [PolicyController::class, 'edit'])->name('editePolicy');
+    Route::put('update-policy-page/{id}', [PolicyController::class, 'update'])->name('updatePolicy');
+    Route::post('/delete-policy/{id}', [PolicyController::class, 'destroy'])->name('deletePolicy');
 
 
 });

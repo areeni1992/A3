@@ -6,7 +6,7 @@
     <section>
         <header>
             <!--Start Hedaer Title -->
-            <div class="title-header text-center" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->slider_image }})">
+            <div class="title-header text-center" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->slider_image ?? '' }})">
                 <div
                     class="container d-flex flex-column text-center justify-content-center align-center align-items-center text-white"
                 >
@@ -59,7 +59,7 @@
     <!-- End Sport Clothes -->
 
     <!-- Start The Market -->
-    <section>
+    <section class="my-home">
         <div class="market my-5">
             <div class="container h-75 d-flex flex-column justify-content-center">
                 <h4 class="text-black">{{ $sectionsData->translate(app()->getLocale())->second_banner_text }}</h4>
@@ -74,12 +74,12 @@
                     width="700"
                 />
 
-                <img
-                    src="assets/img/market-2.jpg"
-                    alt="Error In Download The Image"
-                    class="market-img2 img-fluid d-none d-lg-block"
-                    width="500"
-                />
+{{--                <img--}}
+{{--                    src="assets/img/market-2.jpg"--}}
+{{--                    alt="Error In Download The Image"--}}
+{{--                    class="market-img2 img-fluid d-none d-lg-block"--}}
+{{--                    width="500"--}}
+{{--                />--}}
             </div>
         </div>
     </section>
@@ -132,7 +132,7 @@
                                 {{ $sectionsData->translate(app()->getLocale())->third_banner_text }}
 
                             </p>
-                            <a class="btn apperal-btn" href="{{ route('showPage',  $sectionsData->page_ids['third']) }}">{{ __('words.LEARN MORE') }}</a>
+                            <a class="btn apperal-btn" href="{{ route('showPage',  $sectionsData->page_ids['third'] ?? '') }}">{{ __('words.LEARN MORE') }}</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 p-0 d-none d-lg-block d-md-block">
@@ -173,12 +173,12 @@
     <!-- End Box Slider Three -->
 
     <!-- Start Loyalty Program -->
-    <section>
-        <div class="loyal" style="background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->fourth_banner }})">
+    <section style="background-size: cover; background-image: url({{ config('app.url').'/storage/images/'.$sectionsData->fourth_banner }})">
+        <div class="loyal">
             <div class="container h-100 d-flex flex-column justify-content-center">
                 <h2><span>{{ $sectionsData->translate(app()->getLocale())->fourth_banner_title }}</span></h2>
                 <p class="text-muted">{{ $sectionsData->translate(app()->getLocale())->fourth_banner_text }}</p>
-                <a class="btn loyal-btn py-2" href="{{ route('showPage', $sectionsData->page_ids['last']) }}">{{ __('words.LEARN MORE') }}</a>
+                <a class="btn loyal-btn py-2" href="{{ route('showPage', $sectionsData->page_ids['last'] ?? '') }}">{{ __('words.LEARN MORE') }}</a>
             </div>
         </div>
     </section>

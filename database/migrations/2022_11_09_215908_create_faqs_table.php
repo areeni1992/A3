@@ -16,13 +16,11 @@ class CreateFaqsTable extends Migration
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
             $table->string('page_title')->nullable();
+            $table->string('background')->nullable();
+            $table->string('desc')->nullable();
             $table->string('short_desc')->nullable();
-            $table->longText('desc')->nullable();
-            $table->text('background')->nullable();
-
-            $table->string('question_tap')->nullable();
-            $table->string('questions')->nullable();
-            $table->longText('answers')->nullable();
+            $table->enum('publish_for', ['admin', 'user'])->nullable();
+            $table->string('faq_name')->nullable();
 
             $table->timestamps();
         });

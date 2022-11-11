@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Layouts\HomePage;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\homePage;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Setting;
@@ -22,9 +23,11 @@ class HomeController extends Controller
         $pages = Page::where('status', 'publish')->get();
         $sectionsData = homePage::first();
         $products = Product::all();
+        $policies = Policy::where('publish_for', 'admin')->get();
+
         $posts = Post::latest()->take(2)->get();
 
-        return view('layouts.homepage.homepage', compact('posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homepage.homepage', compact('posts','policies', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
     }
 
     public function showPage(Page $page)
@@ -32,8 +35,9 @@ class HomeController extends Controller
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
         $pages = Page::where('status', 'publish')->get();
         $settings = Setting::first()->toArray();
+        $policies = Policy::where('publish_for', 'admin')->get();
 
-        return view('layouts.homepage.singlePage', compact('settings', 'page', 'pages', 'settings', 'categories'));
+        return view('layouts.homepage.singlePage', compact('settings','policies', 'page', 'pages', 'settings', 'categories'));
     }
 
     public function showPost(Post $post)
@@ -41,8 +45,9 @@ class HomeController extends Controller
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
         $pages = Page::where('status', 'publish')->get();
         $settings = Setting::first()->toArray();
+        $policies = Policy::where('publish_for', 'admin')->get();
 
-        return view('layouts.homepage.singlePost', compact('settings', 'post', 'pages', 'settings', 'categories'));
+        return view('layouts.homepage.singlePost', compact('settings','policies', 'post', 'pages', 'settings', 'categories'));
 
     }
     public function getSubCategories($id)
@@ -53,8 +58,9 @@ class HomeController extends Controller
         $pages = Page::where('status', 'publish')->get();
         $subCat = $catId->subcategory;
         $posts = Post::latest()->take(2)->get();
+        $policies = Policy::where('publish_for', 'admin')->get();
 
-        return view('layouts.homepage.singleCategory', compact('settings', 'posts', 'pages', 'subCat', 'settings', 'categories', 'catId'));
+        return view('layouts.homepage.singleCategory', compact('settings','policies', 'posts', 'pages', 'subCat', 'settings', 'categories', 'catId'));
     }
 
     public function contactPage(Request $request)
@@ -115,7 +121,9 @@ class HomeController extends Controller
         }
         if ($request->method() == 'GET')
         {
-            return view('layouts.homepage.contactUs', compact('posts', 'pages', 'settings', 'categories'));
+            $policies = Policy::where('publish_for', 'admin')->get();
+
+            return view('layouts.homepage.contactUs', compact('posts', 'policies', 'pages', 'settings', 'categories'));
         }
 
     }

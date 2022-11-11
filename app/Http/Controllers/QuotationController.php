@@ -71,8 +71,6 @@ class QuotationController extends Controller
                     $updateDate->update($request->except('background', '_token'));
                     return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
                 } else {
-                    $updateDate->insert_by = 'admin';
-                    $updateDate->save();
                     $updateDate->update($request->except('background', '_token'));
                     return redirect()->back()->with('success', 'The Message Has Been sending Successfully');
                 }

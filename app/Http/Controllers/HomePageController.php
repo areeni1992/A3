@@ -7,6 +7,7 @@ use App\Models\homePage;
 use App\Http\Requests\StorehomePageRequest;
 use App\Http\Requests\UpdatehomePageRequest;
 use App\Models\Page;
+use App\Models\Policy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
@@ -132,7 +133,7 @@ class HomePageController extends Controller
         $json_page = json_encode($page_ids, JSON_UNESCAPED_SLASHES);
         $json_data = json_encode($cat_ids, JSON_UNESCAPED_SLASHES);
 
-        if ($request->method() == 'POST' && empty($validated)) {
+        if ($request->method() == 'POST') {
             if ($request->hasFile('image') || $request->hasFile('catalog')) {
                 foreach ($data as $file) {
 
@@ -199,8 +200,8 @@ class HomePageController extends Controller
         else{
             $exactData = homePage::find($request->id);
             if ($request->hasFile('image') || $request->hasFile('catalog')) {
-                if (!isNull($data))
-                {
+//                if (!isNull($data))
+//                {
                     foreach ($data as $file) {
                         if (File::exists(public_path('storage/images/'.$file)))
                         {
@@ -244,7 +245,7 @@ class HomePageController extends Controller
                             DB::table('home_pages')->update(['catalog_image' => $name]);
                         }
 
-                    }
+//                    }
                 }
                 if ($request->hasFile('catalog')) {
                     Storage::disk('public')->delete($exactData->catalog);

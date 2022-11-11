@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+/* Header */
+/* Frist Navbar */
+section header .navbar {
+    background-color: #FF8A00;
+}
+
+/* search bar */
+.saerch-bar .container .row form .input-group input {
+    background-color: #F1F1F1;
+}
+
+.saerch-bar .container .row form .input-group .search-btn {
+    background-color: #FF8A00 !important;
+    font-size: 14px;
+    width: 100px;
+}
+
+/* Second Navbar */
+section header .S-navbar {
+    background-color: #F1F1F1;
+}
+
+section header .S-navbar .container .navbar-brand .home-icon {
+    color: #FF8A00 !important;
+
+}
+
+section header .S-navbar .container .navbar-nav li .home-icon {
+    color: #FF8A00 !important;
+}
+
+section header .S-navbar .container .navbar-nav li a {
+    color: #000;
+
+}
+
+section header .S-navbar .container .navbar-nav li a:hover {
+    color: #FF8A00;
+}
+
+/* Header Title */
+
+section header .title-header {
+    background-image: url('../img/about.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+section header .title-header .container {
+    height: 60vh;
+}
+
+section header .title-header .container nav ol li {
+    color: #FF8A00;
+}
+
+section header .title-header .container nav ol li a {
+    font-size: 17px;
+    width: 30%;
+    color: #000;
+    text-decoration: none;
+}
+
+section header .title-header .container .title-btn {
+    background-color: #FF8A00;
+    color: #FFF;
+    width: 16%;
+    font-size: 14px;
+
+}
+
+/* faq */
+section .faq .container .nav-faq ul {
+    background-color: #F7F7F7;
+    padding: 20px 64px;
+}
+
+section .faq .container .header-faq .color {
+    color: #FF8A00;
+}
+
+section .faq .container .nav-pills .nav-link {
+    color: #FFF;
+    background-color: #DFDFDF;
+}
+
+section .faq .nav-pills .nav-link.active {
+    background-color: #FF8A00;
+    color: #FFF;
+}
+
+section .faq .container .nav-faq .main-box .box {
+    padding: 15px;
+    width: 90%;
+}
+
+section .faq .container .nav-faq .main-box .box .accordion-item {
+    background-color: #F7F7F7;
+    padding: 8px;
+    margin: 10px 0px;
+    font-size: 16px;
+}
+
+section .faq .container .nav-faq .main-box .box .accordion-item h2 button {
+    font-size: 14px;
+}
+
+section .faq .container .nav-faq .main-box .box .last {
+    width: 90.5%;
+}
+
+/* Contact Info */
+section .contact-info {
+    width: 77%;
+    margin: auto;
+}
+
+section .contact-info .container h6 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+section .contact-info .container .row .info {
+    background-color: #EAEAEA;
+    height: 30vh;
+}
+
+section .contact-info .container .row .email {
+    background-color: #FF8A00;
+    color: #FFF;
+    height: 30vh;
+
+}
+
+
+/* Procurement program  */
+section .program .container .row h5 {
+    color: #FF8A00;
+    font-weight: 400;
+}
+
+
+/* Footer */
+section footer {
+    background-color: #f1f1f1
+}
+
+section footer .container .row ul li {
+    padding: 5px 0;
+}
+
+section footer .copyright {
+    font-size: 13px;
+}
+
+section footer .copyright a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Media Query */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    /* Contact Info */
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 20vh;
+    }
+
+    section .contact-info .container .row a {
+        width: 50%;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    /* Header Title */
+    section header .title-header {
+        height: 33vh;
+    }
+
+
+    /* Contact Info */
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 20vh;
+    }
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    /* Contact Info */
+    section header .title-header {
+        height: 60vh;
+    }
+
+    section .contact-info .container .row .email,
+    section .contact-info .container .row .info {
+        height: 30vh;
+    }
+}

@@ -35,7 +35,7 @@ class CareerController extends Controller
         return view('backend.user.career', compact('careerData'));
     }
 
-    public function insertPageDate(Request $request, $id)
+    public function insertPageDate(Request $request)
     {
         $data = [
             'background' => 'image|mimes:jpeg,png,jpg,gif,svg'
@@ -52,7 +52,7 @@ class CareerController extends Controller
 
                 if ($request->hasFile('background')) {
                     $image = $request->file('background');
-                    $newName = time() . '_' . $image->getClientOriginalName();
+                    $newName = time().'_'.$image->getClientOriginalName();
                     $request->file('background')->storeAs('images', $newName, 'public');
 
                     $pageData->background = $newName;
@@ -66,7 +66,7 @@ class CareerController extends Controller
             }
 
             if ($request->method() == 'PUT') {
-                $updateDate = Career::find($id);
+                $updateDate = Career::find($request->id);
                 if ($request->hasFile('background')) {
                     Storage::disk('public')->delete($updateDate->background);
 
