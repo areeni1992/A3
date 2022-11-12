@@ -146,12 +146,15 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 mx-auto">
-                        <form>
+                        <form action="{{ route('search') }}" method="POST">
+                            @csrf
                             <div class="input-group mb-3">
                                 <input
                                     type="search"
+                                    name="search"
                                     class="form-control border-0"
                                     placeholder="Search here"
+                                    value="{{ request('search') }}"
                                 />
                                 <button class="btn search-btn">Search</button>
                             </div>

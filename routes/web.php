@@ -25,7 +25,7 @@ use App\Http\Controllers\PolicyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::any('/search/', [HomeController::class, 'search'])->name('search');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::any('/contact-us', [HomeController::class, 'contactPage'])->name('contactPage');
@@ -54,12 +54,18 @@ Route::group(
     Route::get('/messages', [NewsLatterController::class, 'messages'])->name('messages');
     Route::get('/career', [CareerController::class, 'insert'])->name('insert');
     Route::any('/insert-career-page-date/{id?}', [CareerController::class, 'insertPageDate'])->name('insertPageDate');
+    Route::get('/all-career', [CareerController::class, 'getAllCareers'])->name('getAllCareers');
+    Route::get('/career/generate_pdf/{id}', [CareerController::class, 'generate_pdf'])->name('career_pdf');
+
     Route::get('/quotation', [QuotationController::class, 'dashIndex'])->name('dashIndex');
     Route::any('/quotation/{id?}', [QuotationController::class, 'insertQuotDate'])->name('insertQuotDate');
     Route::get('/quotations', [QuotationController::class, 'getAllQuotations'])->name('getAllQuotations');
     Route::get('/quotations/generate_pdf/{id}', [QuotationController::class, 'generate_pdf'])->name('generate_pdf');
     Route::get('/agents', [AgentController::class, 'insert'])->name('agentsDash');
+    Route::get('/all-agents', [AgentController::class, 'getAllAgents'])->name('getAllAgents');
+    Route::get('/agents/generate_pdf/{id}', [AgentController::class, 'generate_pdf'])->name('agent_pdf');
     Route::any('/insert-agent-page-date/{id?}', [AgentController::class, 'insertPageData'])->name('insertPageData');
+
 
     Route::get('/faq-create', [FaqController::class, 'index'])->name('faqSettings');
     Route::any('/insert-faq-setting-data/{id?}', [FaqController::class, 'faqSettingData'])->name('faqSettingData');

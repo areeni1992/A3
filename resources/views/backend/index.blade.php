@@ -86,9 +86,11 @@
                     <a href="{{ route('subscribers') }}" class="nav-link cursor-pointer">Subscribers</a>
                     <a href="{{ route('messages') }}" class="nav-link cursor-pointer">Messages</a>
                     <a href="{{ route('insert') }}" class="nav-link cursor-pointer">Career Page Settings</a>
+                    <a href="{{ route('getAllCareers') }}" class="nav-link cursor-pointer">Career Messages</a>
                     <a href="{{ route('dashIndex') }}" class="nav-link cursor-pointer">Quotations Page Settings</a>
                     <a href="{{ route('getAllQuotations') }}" class="nav-link cursor-pointer">Quotaionts</a>
                     <a href="{{ route('agentsDash') }}" class="nav-link cursor-pointer">Agents Page Settings</a>
+                    <a href="{{ route('getAllAgents') }}" class="nav-link cursor-pointer">Agents Messages</a>
                     <a href="{{ route('faqSettings') }}" class="nav-link cursor-pointer">FAQ Page Settings</a>
                     <a href="{{ route('faqIndex') }}" class="nav-link cursor-pointer">FAQ</a>
                     <a href="{{ route('indexQuestions') }}" class="nav-link cursor-pointer">Questions & Answers</a>

@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\homePage;
 use App\Models\Page;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use PDF;
 class AgentController extends Controller
 {
     public function index()
@@ -23,7 +24,9 @@ class AgentController extends Controller
         $products = Product::all();
         $posts = Post::latest()->take(2)->get();
         $agentsData = Agent::where('insert_by', 'admin')->latest()->first();
-        return view('layouts.homePage.agents', compact('agentsData', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        $policies = Policy::where('publish_for', 'admin')->get();
+
+        return view('layouts.homePage.agents', compact('agentsData','policies', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
     }
     public function insert()
     {
@@ -157,6 +160,22 @@ class AgentController extends Controller
         } else {
             return redirect()->back()->with('error', 'error');
         }
+
+    }
+
+    public function getAllAgents()
+    {
+        $agents = Agent::where('insert_by', 'user')->get();
+
+        return view('backend.user.allAgents', compact('agents'));
+    }
+
+    public function generate_pdf($id)
+    {
+
+        $exactData = Agent::find($id);
+        $pdf = PDF::loadView('backend.user.agentPdf', array('exactData' => $exactData));
+        return $pdf->stream('document.pdf');
 
     }
 

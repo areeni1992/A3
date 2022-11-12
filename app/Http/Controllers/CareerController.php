@@ -6,13 +6,14 @@ use App\Models\Career;
 use App\Models\Category;
 use App\Models\homePage;
 use App\Models\Page;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
+use PDF;
 class CareerController extends Controller
 {
 
@@ -25,7 +26,9 @@ class CareerController extends Controller
         $products = Product::all();
         $posts = Post::latest()->take(2)->get();
         $careerData = Career::where('insert_by', 'admin')->latest()->first();
-        return view('layouts.homePage.career', compact('careerData', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        $policies = Policy::where('publish_for', 'admin')->get();
+
+        return view('layouts.homePage.career', compact('careerData','policies', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
     }
 
     public function insert()
@@ -144,6 +147,21 @@ class CareerController extends Controller
             } else {
                 return redirect()->back()->with('error', 'error');
             }
+    }
+
+    public function getAllCareers()
+    {
+        $agents = Career::where('insert_by', 'user')->get();
+
+        return view('backend.user.allCareers', compact('agents'));
+    }
+
+    public function generate_pdf($id)
+    {
+
+        $exactData = Career::find($id);
+        $pdf = PDF::loadView('backend.user.careerPdf', array('exactData' => $exactData));
+        return $pdf->stream('document.pdf');
 
     }
 }

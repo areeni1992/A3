@@ -38,7 +38,7 @@
                                                     <div>
                                                         <h2>{{ $post->translate(app()->getLocale())->title }}</h2>
                                                         <p>
-                                                            {!! $post->translate(app()->getLocale())->body !!}
+                                                            {!! \Illuminate\Support\Str::limit($post->translate(app()->getLocale())->body) !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -58,7 +58,7 @@
                                                         <div>
                                                             <h2>{{ $post->translate(app()->getLocale())->title }}</h2>
                                                             <p>
-                                                                {!! $post->translate(app()->getLocale())->body !!}
+                                                                {!! \Illuminate\Support\Str::limit($post->translate(app()->getLocale())->body) !!}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -86,7 +86,7 @@
                                                     <div>
                                                         <h2>{{ $post->translate(app()->getLocale())->title }}</h2>
                                                         <p>
-                                                            {!! $post->translate(app()->getLocale())->body !!}
+                                                            {!!\Illuminate\Support\Str::limit( $post->translate(app()->getLocale())->body) !!}
                                                         </p>
                                                     </div>
                                                 </div>

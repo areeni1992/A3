@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\homePage;
 use App\Models\Page;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Quotation;
@@ -88,8 +89,10 @@ class QuotationController extends Controller
         $posts = Post::latest()->take(2)->get();
         $quotData = Quotation::where('insert_by', 'admin')->latest()->first();
         $countries = CountryListFacade::getList(app()->getLocale());
+        $policies = Policy::where('publish_for', 'admin')->get();
+
 //        dd($curruncies);
-        return view('layouts.homepage.quotation', compact('quotData', 'countries', 'settings', 'categories', 'pages', 'sectionsData', 'products', 'posts'));
+        return view('layouts.homepage.quotation', compact('quotData','policies', 'countries', 'settings', 'categories', 'pages', 'sectionsData', 'products', 'posts'));
     }
 
     public function insertRequiest(Request $request)

@@ -11,10 +11,31 @@ use App\Models\Product;
 use App\Models\Setting;
 use App\Models\UserSub;
 use Illuminate\Http\Request;
-
 use App\Models\Page;
+
+
 class HomeController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $settings = Setting::first()->toArray();
+        $pages = Page::where('status', 'publish')->get();
+        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
+        $search = $request->input('search');
+        $policies = Policy::where('publish_for', 'admin')->get();
+
+
+            $posts = Post::where('title', 'like', '%'.$search.'%')->get();
+            if (count($posts) > 0)
+            {
+                return view ( 'layouts.homepage.posts', compact('settings','posts','policies', 'pages', 'categories'));
+            } else {
+            $posts = Post::all();
+            return view('layouts.homepage.posts', compact('settings', 'policies', 'posts', 'pages', 'categories'));
+        }
+
+    }
 
     public function index()
     {

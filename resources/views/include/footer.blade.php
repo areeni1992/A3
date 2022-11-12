@@ -89,9 +89,9 @@
                     </a>
                 </div>
                 <div class="col-md-8 text-end mt-3 mt-md-0">
-{{--                    @foreach($policies as $row)--}}
-{{--                    <a href="{{ route('singlePolicy', $row->id) }}" class="me-2">{{ $row->translate(app()->getLocale())->policy_name }}</a>--}}
-{{--                    @endforeach--}}
+                    @foreach($policies as $row)
+                    <a href="{{ route('singlePolicy', $row->id) }}" class="me-2">{{ $row->translate(app()->getLocale())->policy_name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
