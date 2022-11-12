@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\homePage;
-use App\Models\Page;
-use App\Models\Policy;
-use App\Models\Post;
-use App\Models\Product;
+
 use App\Models\Quotation;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Monarobase\CountryList\CountryListFacade;
@@ -81,18 +75,11 @@ class QuotationController extends Controller
 
     public function userQoutPage()
     {
-        $settings = Setting::first()->toArray();
-        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
-        $pages = Page::where('status', 'publish')->get();
-        $sectionsData = homePage::first();
-        $products = Product::all();
-        $posts = Post::latest()->take(2)->get();
         $quotData = Quotation::where('insert_by', 'admin')->latest()->first();
         $countries = CountryListFacade::getList(app()->getLocale());
-        $policies = Policy::where('publish_for', 'admin')->get();
 
 //        dd($curruncies);
-        return view('layouts.homepage.quotation', compact('quotData','policies', 'countries', 'settings', 'categories', 'pages', 'sectionsData', 'products', 'posts'));
+        return view('layouts.homepage.quotation', compact('quotData', 'countries'));
     }
 
     public function insertRequiest(Request $request)

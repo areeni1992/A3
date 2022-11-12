@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Faq;
-use App\Models\homePage;
-use App\Models\Page;
-use App\Models\Policy;
-use App\Models\Post;
-use App\Models\Product;
 use App\Models\Question;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -146,36 +139,23 @@ class FaqController extends Controller
 
     public function faqPage()
     {
-        $settings = Setting::first()->toArray();
-        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
-        $pages = Page::where('status', 'publish')->get();
-        $sectionsData = homePage::first();
-        $products = Product::all();
-        $posts = Post::latest()->take(2)->get();
         $admin = Faq::where('publish_for', 'admin')->first();
         $faqs = Faq::where('publish_for', 'user')->get();
         $questions = Question::with('faq')->get();
-        $policies = Policy::where('publish_for', 'admin')->get();
 
-        return view('layouts.homePage.faq', compact('faqs','policies','questions', 'admin', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homePage.faq', compact('faqs', 'admin', 'questions'));
 
     }
 
     public function singleFaq(Request $request)
     {
-        $settings = Setting::first()->toArray();
-        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
-        $pages = Page::where('status', 'publish')->get();
-        $sectionsData = homePage::first();
-        $products = Product::all();
-        $posts = Post::latest()->take(2)->get();
+
+        $singleFaq = Question::with('faq')->where('id', $request->id)->get();
         $admin = Faq::where('publish_for', 'admin')->first();
         $faqs = Faq::where('publish_for', 'user')->get();
         $questions = Question::with('faq')->get();
-        $singleFaq = Question::with('faq')->where('id', $request->id)->get();
-        $policies = Policy::where('publish_for', 'admin')->get();
 
-        return view('layouts.homePage.faq', compact('singleFaq','policies', 'faqs','questions', 'admin', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homePage.faq', compact('singleFaq', 'admin', 'faqs', 'questions'));
     }
 
 

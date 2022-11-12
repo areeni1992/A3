@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\homePage;
 use App\Http\Requests\StorehomePageRequest;
-use App\Http\Requests\UpdatehomePageRequest;
 use App\Models\Page;
-use App\Models\Policy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
-use function PHPUnit\Framework\isNull;
 
 class HomePageController extends Controller
 {

@@ -2,13 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\homePage;
-use App\Models\Page;
 use App\Models\Policy;
-use App\Models\Post;
-use App\Models\Product;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -182,27 +176,16 @@ class PolicyController extends Controller
 
     public function PolicyPage()
     {
-        $settings = Setting::first()->toArray();
-        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
-        $pages = Page::where('status', 'publish')->get();
-        $sectionsData = homePage::first();
-        $products = Product::all();
-        $posts = Post::latest()->take(2)->get();
         $admin = Policy::where('publish_for', 'admin')->first();
         $faqs = Policy::where('publish_for', 'user')->latest()->first();
         $pols = Policy::where('publish_for', 'user')->get();
-        return view('layouts.homePage.policy', compact('pols', 'faqs', 'admin', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homePage.policy', compact('pols', 'faqs', 'admin'));
 
     }
 
     public function singlePolicy(Request $request)
     {
-        $settings = Setting::first()->toArray();
-        $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
-        $pages = Page::where('status', 'publish')->get();
-        $sectionsData = homePage::first();
-        $products = Product::all();
-        $posts = Post::latest()->take(2)->get();
+
         $admin = Policy::where('publish_for', 'admin')->first();
         $faqs = Policy::where('publish_for', 'user')->get();
         $questions = Policy::get();
@@ -210,6 +193,6 @@ class PolicyController extends Controller
 
         $pols = Policy::where('publish_for', 'user')->get();
 
-        return view('layouts.homePage.policy', compact('pols','singleFaq', 'faqs','questions', 'admin', 'posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homePage.policy', compact('pols','singleFaq', 'faqs','questions', 'admin'));
     }
 }
