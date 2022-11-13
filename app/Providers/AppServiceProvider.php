@@ -46,7 +46,9 @@ class AppServiceProvider extends ServiceProvider
             'sectionsData' => homePage::first(),
             'products' => Product::all(),
             'posts' => Post::latest()->take(2)->get(),
-            'policies' => Policy::where('publish_for', 'admin')->get()
+            'policies' => Policy::where('publish_for', 'user')->get(),
+            'img' => Post::all()
+
 
         ]);
     }

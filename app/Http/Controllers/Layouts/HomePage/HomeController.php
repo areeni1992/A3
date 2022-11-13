@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\homePage;
 use App\Models\Policy;
 use App\Models\Post;
+use App\Models\PostTranslation;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\UserSub;
@@ -26,7 +27,7 @@ class HomeController extends Controller
         $policies = Policy::where('publish_for', 'admin')->get();
 
 
-            $posts = Post::where('title', 'like', '%'.$search.'%')->get();
+            $posts = PostTranslation::where('title', 'like', '%'.$search.'%')->get();
             if (count($posts) > 0)
             {
                 return view ( 'layouts.homepage.posts', compact('settings','posts','policies', 'pages', 'categories'));
@@ -44,11 +45,10 @@ class HomeController extends Controller
         $pages = Page::where('status', 'publish')->get();
         $sectionsData = homePage::first();
         $products = Product::all();
-        $policies = Policy::where('publish_for', 'admin')->get();
 
         $posts = Post::latest()->take(2)->get();
 
-        return view('layouts.homepage.homepage', compact('posts','policies', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
+        return view('layouts.homepage.homepage', compact('posts', 'products', 'pages', 'settings', 'categories', 'sectionsData'));
     }
 
     public function showPage(Page $page)
